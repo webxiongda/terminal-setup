@@ -37,15 +37,15 @@
 ### macOS
 
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### Debian / Ubuntu
 
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### Windows (WSL)
@@ -58,8 +58,8 @@ wsl --install
 
 然后在 WSL 中：
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### 选项
@@ -73,7 +73,7 @@ cd xiong-terminal-setup && ./setup.sh
 一行命令（自动 clone）：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/xiong-terminal-setup/main/setup.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
 ```
 
 ## 工具栈

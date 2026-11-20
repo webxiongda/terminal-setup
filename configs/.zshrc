@@ -1,5 +1,5 @@
 #!/bin/zsh
-# ─── xiong-terminal-setup: Zsh config ────────────────────────────────
+# ─── terminal-setup: Zsh config ────────────────────────────────
 # Stack: Starship + zsh-autosuggestions + zsh-syntax-highlighting
 #        fzf + zoxide + fnm
 

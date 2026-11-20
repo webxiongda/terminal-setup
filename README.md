@@ -37,15 +37,15 @@ One-script terminal environment setup for **macOS**, **Debian/Ubuntu**, and **Wi
 ### macOS
 
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### Debian / Ubuntu
 
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### Windows (WSL)
@@ -58,8 +58,8 @@ wsl --install
 
 Then inside WSL:
 ```bash
-git clone https://github.com/webxiongda/xiong-terminal-setup.git
-cd xiong-terminal-setup && ./setup.sh
+git clone https://github.com/webxiongda/terminal-setup.git
+cd terminal-setup && ./setup.sh
 ```
 
 ### Options
@@ -73,7 +73,7 @@ cd xiong-terminal-setup && ./setup.sh
 One-liner (auto-clones):
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/xiong-terminal-setup/main/setup.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
 ```
 
 ## Stack
