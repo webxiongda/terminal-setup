@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/demo-2x.gif" width="600" alt="Demo">
+  <img src="assets/demo.png" width="720" alt="演示 — 自制终端预览图">
 </p>
 
 ## ✨ 特性亮点
@@ -175,6 +175,34 @@ set-ssh-key                  # key 不存在时列出所有可用 key
 | Starship | `~/.config/starship.toml` |
 | Zsh | `~/.zshrc` |
 | Zsh（本机自定义） | `~/.zshrc.local` — 重跑 `setup.sh` 不会覆盖 |
+
+---
+
+## 🔁 重跑、更新与卸载
+
+```bash
+./setup.sh --reinstall   # 重新应用全部配置，忽略「已安装」检查
+./setup.sh --dry-run     # 只预览会做什么（不做任何改动）
+./setup.sh --skip-node   # 跳过 fnm + Node.js（如果你想自己管理 Node）
+```
+
+脚本**没有内置卸载命令**。它只负责安装工具和部署配置，如需还原请手动处理：
+
+- 从带时间戳的备份恢复配置（`~/.zshrc.bak.<时间戳>`、`~/.config/starship.toml.bak.<时间戳>`）。
+- 用包管理器卸载已安装的工具（macOS 用 `brew uninstall <工具名>`，Debian/Ubuntu 用 `sudo apt remove <工具名>`）。
+- 如果不再需要本机自定义配置，删除 `~/.zshrc.local`。
+
+## 🛠️ 常见问题排查
+
+| 现象 | 解决办法 |
+|------|----------|
+| 图标显示成方框 / 缺字形 | 在终端 App 里安装并启用 Nerd Font（macOS 用 Maple Mono NF CN，Linux 用内置的 MesloLGS NF）。 |
+| Linux 上 `bat: command not found` | 脚本已建立 `batcat` → `bat` 软链；执行 `hash -r` 或重开 shell。 |
+| Linux 上 `fd: command not found` | 脚本已建立 `fdfind` → `fd` 软链；重开 shell 即可。 |
+| 提示符颜色不对 / 显示异常 | 确认终端支持 24 位色，然后 `exec zsh` 重新加载配置。 |
+| 装完后 `eza` 找不到 | 脚本安装路径可能还没进 `PATH`——重开终端，或用 `--reinstall` 重跑。 |
+| 中文显示成豆腐块 | 使用 Maple Mono NF CN / MesloLGS NF，并确认 locale 为 UTF-8（`locale` 命令查看）。 |
+| 在原生 Windows（非 WSL）下运行 | 原生 Windows 不支持；先 `wsl --install` 安装 WSL，再在 WSL 里运行脚本。 |
 
 ---
 

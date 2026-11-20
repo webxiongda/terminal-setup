@@ -11,8 +11,17 @@ One-script terminal environment setup for **macOS**, **Debian/Ubuntu**, and **Wi
 </p>
 
 <p align="center">
-  <img src="assets/demo-2x.gif" width="600" alt="Demo">
+  <img src="assets/demo.png" width="720" alt="Demo — self-generated terminal preview">
 </p>
+
+## ✨ Why This Project
+
+- ⚡ **One script, zero config** — fresh machine to productive terminal in minutes
+- ♻️ **Idempotent & re-runnable** — safe to run repeatedly; existing configs are backed up with timestamps before overwrite
+- 🛡️ **Non-destructive** — your machine-specific tweaks live in `~/.zshrc.local`, which the script sources last and never touches
+- 🧩 **Bring your own terminal** — no terminal emulator is installed; works with Warp, iTerm2, Windows Terminal, or any terminal you already use
+- 🌍 **Cross-platform** — macOS (primary), Debian/Ubuntu and WSL (experimental)
+- 🎨 **Coherent theme** — Catppuccin Mocha via Starship, with a CJK-capable Nerd Font, so icons and Chinese text both render correctly
 
 ## Supported Platforms
 
@@ -167,6 +176,34 @@ Both shell configs include a `set-ssh-key` function for quick SSH key switching:
 set-ssh-key my-key-name     # Clears agent, loads ~/.ssh/my-key-name
 set-ssh-key                  # Shows available keys on error
 ```
+
+---
+
+## 🔁 Re-run, Update & Uninstall
+
+```bash
+./setup.sh --reinstall   # Re-apply everything, ignoring "already installed" checks
+./setup.sh --dry-run     # Preview actions without changing anything
+./setup.sh --skip-node   # Skip fnm + Node.js if you manage Node yourself
+```
+
+There is **no built-in uninstall command**. The script only installs tools and deploys configs; to undo manually:
+
+- Restore configs from their timestamped backups (`~/.zshrc.bak.<timestamp>`, `~/.config/starship.toml.bak.<timestamp>`).
+- Remove installed CLI tools with your package manager (`brew uninstall <tool>` on macOS, `sudo apt remove <tool>` on Debian/Ubuntu).
+- Delete `~/.zshrc.local` only if you no longer want your machine-local overrides.
+
+## 🛠️ Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| Icons render as boxes / missing glyphs | Install a Nerd Font in your terminal app and set it as the font (Maple Mono NF CN on macOS, bundled MesloLGS NF on Linux). |
+| `bat: command not found` on Linux | The script symlinks `batcat` → `bat`; run `hash -r` or open a new shell. |
+| `fd: command not found` on Linux | The script symlinks `fdfind` → `fd`; open a new shell. |
+| Prompt looks wrong / no colors | Make sure your terminal supports 24-bit color, then `exec zsh` to reload config. |
+| `command not found: eza` after setup | The script installs to paths that may not be on `PATH` yet — open a new terminal or re-run with `--reinstall`. |
+| Chinese characters show as tofu | Use Maple Mono NF CN / MesloLGS NF and ensure locale is UTF-8 (`locale`). |
+| Running inside native Windows (not WSL) | Native Windows is unsupported; install WSL (`wsl --install`) and run the script there. |
 
 ---
 
