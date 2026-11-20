@@ -11,7 +11,7 @@ One-script terminal environment setup for **macOS**, **Debian/Ubuntu**, and **Wi
 </p>
 
 <p align="center">
-  <img src="assets/demo.png" width="720" alt="Demo — self-generated terminal preview">
+  <img src="assets/demo.gif" width="720" alt="Demo — self-generated terminal animation">
 </p>
 
 ## ✨ Why This Project

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/demo.png" width="720" alt="演示 — 自制终端预览图">
+  <img src="assets/demo.gif" width="720" alt="演示 — 自制终端动画">
 </p>
 
 ## ✨ 特性亮点
