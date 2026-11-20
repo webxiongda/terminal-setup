@@ -97,6 +97,11 @@ bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/xiong-terminal-se
 | **[lazygit](https://github.com/jesseduffield/lazygit)** | Git 终端 UI |
 | **[fnm](https://github.com/Schniz/fnm)** | 快速 Node 版本管理器（Rust 编写） |
 | **[Zellij](https://zellij.dev)** | 现代终端复用器（可选） |
+| **[fastfetch](https://github.com/fastfetch-cli/fastfetch)** | 极快的系统信息展示（neofetch 现代替代） |
+| **[procs](https://github.com/dalance/procs)** | 彩色 `ps` 替代 |
+| **[sd](https://github.com/chmln/sd)** | 直观的 `sed` 替代 |
+| **[hyperfine](https://github.com/sharkdp/hyperfine)** | 命令行基准测试工具 |
+| **[uv](https://github.com/astral-sh/uv)** | 极快的 Python 包管理器 |
 
 ## Warp 快捷键速查（推荐终端，可选）
 

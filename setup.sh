@@ -375,7 +375,7 @@ echo -e "${BOLD}  🛠  Step 5/9: CLI Tools${NC}"
 echo -e "${BOLD}══════════════════════════════════════════${NC}"
 
 install_cli_tools_macos() {
-    local TOOLS=(bat eza fd ripgrep btop zoxide jq tldr git-delta lazygit fzf gh duf dust glow direnv)
+    local TOOLS=(bat eza fd ripgrep btop zoxide jq tldr git-delta lazygit fzf gh duf dust glow direnv fastfetch procs sd hyperfine uv)
     for tool in "${TOOLS[@]}"; do
         if ! $REINSTALL && brew list "$tool" &>/dev/null; then
             success "$tool already installed"
@@ -400,6 +400,29 @@ install_cli_tools_linux() {
             success "$tool installed"
         fi
     done
+
+    # extra modern CLI tools (2026) — best-effort: apt where available, else hint
+    local EXTRA_TOOLS=(fastfetch procs sd hyperfine duf dust glow direnv)
+    for tool in "${EXTRA_TOOLS[@]}"; do
+        if ! $REINSTALL && has_cmd "$tool"; then
+            success "$tool already installed"
+        else
+            info "Installing $tool (best-effort)..."
+            if run_cmd sudo apt-get install -y "$tool" 2>/dev/null; then
+                success "$tool installed via apt"
+            else
+                warn "$tool not in apt — install manually (cargo / GitHub releases)"
+            fi
+        fi
+    done
+
+    # uv — fast Python package manager (official installer)
+    if ! $REINSTALL && has_cmd uv; then
+        success "uv already installed"
+    else
+        info "Installing uv..."
+        run_cmd bash -c 'curl -LsSf https://astral.sh/uv/install.sh | sh' || warn "uv install failed — see https://docs.astral.sh/uv/"
+    fi
 
     # btop — not in apt on older Debian/Ubuntu, use snap as fallback
     if ! $REINSTALL && has_cmd btop; then

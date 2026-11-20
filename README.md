@@ -97,6 +97,11 @@ bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/xiong-terminal-se
 | **[lazygit](https://github.com/jesseduffield/lazygit)** | Git TUI |
 | **[fnm](https://github.com/Schniz/fnm)** | Fast Node Manager (Rust) |
 | **[Zellij](https://zellij.dev)** | Modern terminal multiplexer (optional) |
+| **[fastfetch](https://github.com/fastfetch-cli/fastfetch)** | Fast system info (modern `neofetch` replacement) |
+| **[procs](https://github.com/dalance/procs)** | Colorful `ps` replacement |
+| **[sd](https://github.com/chmln/sd)** | Intuitive `sed` replacement |
+| **[hyperfine](https://github.com/sharkdp/hyperfine)** | Command-line benchmarking tool |
+| **[uv](https://github.com/astral-sh/uv)** | Blazing-fast Python package manager |
 
 ## What It Does
 
