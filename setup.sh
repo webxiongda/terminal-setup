@@ -36,6 +36,23 @@ success() { echo -e "${GREEN}[OK]${NC} $*"; }
 warn()    { echo -e "${YELLOW}[WARN]${NC} $*"; }
 error()   { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 
+# ask: yes/no prompt that never blocks in dry-run or non-interactive shells.
+# In those modes it defaults to "no" so the script finishes unattended.
+ask() {
+    local prompt="$1" answer
+    if $DRY_RUN; then
+        echo -e "  ${YELLOW}[DRY-RUN]${NC} ${prompt} (default: N)"
+        return 1
+    fi
+    if [[ ! -t 0 ]]; then
+        echo -e "  ${YELLOW}[NON-INTERACTIVE]${NC} ${prompt} (default: N)"
+        return 1
+    fi
+    printf "%s" "$prompt"
+    read -r answer
+    [[ "$answer" =~ ^[Yy]$ ]]
+}
+
 # run_cmd: execute a command, or just print it in dry-run mode
 run_cmd() {
     if $DRY_RUN; then
@@ -656,9 +673,7 @@ elif ! $REINSTALL && has_cmd fnm; then
     fi
 else
     echo ""
-    printf "  Install fnm + Node.js? (y/N): "
-    read -r INSTALL_FNM
-    if [[ "$INSTALL_FNM" =~ ^[Yy]$ ]]; then
+    if ask "  Install fnm + Node.js? (y/N): "; then
         case "$OS" in
             macos)
                 info "Installing fnm (Fast Node Manager)..."
@@ -698,9 +713,7 @@ if ! $REINSTALL && has_cmd zellij; then
 else
     echo ""
     echo -e "  Zellij is a modern terminal multiplexer (like tmux, but better UX)."
-    printf "  Install Zellij? (y/N): "
-    read -r INSTALL_ZELLIJ
-    if [[ "$INSTALL_ZELLIJ" =~ ^[Yy]$ ]]; then
+    if ask "  Install Zellij? (y/N): "; then
         case "$OS" in
             macos)
                 info "Installing Zellij..."
@@ -728,9 +741,7 @@ if ! $REINSTALL && has_cmd yazi; then
 else
     echo ""
     echo -e "  Yazi is a blazing-fast terminal file manager with image/video preview."
-    printf "  Install Yazi? (y/N): "
-    read -r INSTALL_YAZI
-    if [[ "$INSTALL_YAZI" =~ ^[Yy]$ ]]; then
+    if ask "  Install Yazi? (y/N): "; then
         case "$OS" in
             macos)
                 info "Installing Yazi..."
