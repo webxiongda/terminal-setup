@@ -9,9 +9,21 @@ One-script terminal environment setup for **macOS**, **Debian/Ubuntu**, and **Wi
   &nbsp;&nbsp;
   <img src="assets/starship.png" width="80" alt="Starship">
 </p>
+<!-- Lead with what the animation shows, then show it. -->
+<p align="center">
+  <b>One command turns a fresh macOS / Linux shell into this ready-to-use setup.</b><br>
+  The 30-second animation below shows daily use after setup: <code>eza</code> for icon-rich listings,
+  <code>bat</code> for highlighted files, <code>zoxide</code> for smart jumps, <code>fzf</code> for fuzzy search,
+  <code>lazygit</code> and <code>fastfetch</code> — plus a Catppuccin <code>Starship</code> prompt that
+  follows your system's light/dark mode.
+</p>
 
 <p align="center">
-  <img src="assets/demo.gif" width="720" alt="Demo — self-generated terminal animation">
+  <img src="assets/demo.gif" width="720" alt="Demo — daily use of the configured terminal">
+</p>
+
+<p align="center">
+  <sub>The GIF is reproducible via <a href="https://github.com/charmbracelet/vhs">VHS</a> from <a href="assets/demo.tape">assets/demo.tape</a> — see "Regenerate the demo" below.</sub>
 </p>
 
 ## ✨ Why This Project
@@ -209,6 +221,17 @@ There is **no built-in uninstall command**. The script only installs tools and d
 | `command not found: eza` after setup | The script installs to paths that may not be on `PATH` yet — open a new terminal or re-run with `--reinstall`. |
 | Chinese characters show as tofu | Use Maple Mono NF CN / MesloLGS NF and ensure locale is UTF-8 (`locale`). |
 | Running inside native Windows (not WSL) | Native Windows is unsupported; install WSL (`wsl --install`) and run the script there. |
+
+## 🎬 Regenerate the Demo
+
+`assets/demo.gif` isn't a screen recording — it's a reproducible script written with [VHS](https://github.com/charmbracelet/vhs). Change the commands in `assets/demo.tape`, re-render, and the intro stays in sync with the actual tool stack.
+
+```bash
+brew install vhs            # also needs ttyd and ffmpeg on PATH
+vhs assets/demo.tape        # regenerates assets/demo.gif
+```
+
+For MP4/WebM, add an extra `Output assets/demo.mp4` line to the tape and re-run.
 
 ---
 

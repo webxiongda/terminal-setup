@@ -9,9 +9,20 @@
   &nbsp;&nbsp;
   <img src="assets/starship.png" width="80" alt="Starship">
 </p>
+<!-- 核心介绍：先用一句话告诉读者动图在演示什么，再看动画 -->
+<p align="center">
+  <b>一条命令，把全新的 macOS / Linux 终端变成这套开箱即用的样子。</b><br>
+  下面的 30 秒动画展示了装好后日常使用的样子：<code>eza</code> 带图标列目录、<code>bat</code> 高亮看文件、
+  <code>zoxide</code> 智能跳转、<code>fzf</code> 模糊搜索、<code>lazygit</code> 与 <code>fastfetch</code>——
+  以及会跟随明暗模式切换的 Catppuccin <code>Starship</code> 提示符。
+</p>
 
 <p align="center">
-  <img src="assets/demo.gif" width="720" alt="演示 — 自制终端动画">
+  <img src="assets/demo.gif" width="720" alt="演示 — 一键配置后的终端日常使用动画">
+</p>
+
+<p align="center">
+  <sub>动图由 <a href="https://github.com/charmbracelet/vhs">VHS</a> 根据 <a href="assets/demo.tape">assets/demo.tape</a> 可复现生成，见文末「重新生成演示动图」。</sub>
 </p>
 
 ## ✨ 特性亮点
@@ -208,6 +219,18 @@ set-ssh-key                  # key 不存在时列出所有可用 key
 | 装完后 `eza` 找不到 | 脚本安装路径可能还没进 `PATH`——重开终端，或用 `--reinstall` 重跑。 |
 | 中文显示成豆腐块 | 使用 Maple Mono NF CN / MesloLGS NF，并确认 locale 为 UTF-8（`locale` 命令查看）。 |
 | 在原生 Windows（非 WSL）下运行 | 原生 Windows 不支持；先 `wsl --install` 安装 WSL，再在 WSL 里运行脚本。 |
+
+
+## 🎬 重新生成演示动图
+
+`assets/demo.gif` 不是录屏，而是一段用 [VHS](https://github.com/charmbracelet/vhs) 编写的可复现脚本。改命令只需改 `assets/demo.tape`，重新渲染即可，保证介绍和工具栈始终同步。
+
+```bash
+brew install vhs            # 需同时具备 ttyd 与 ffmpeg
+vhs assets/demo.tape        # 覆盖生成 assets/demo.gif
+```
+
+想换成 MP4/WebM，在 tape 里多写一行 `Output assets/demo.mp4` 再重跑即可。
 
 ---
 
