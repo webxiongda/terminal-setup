@@ -29,9 +29,8 @@ find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -R "$TMP"/. .
 rm -rf "$TMP"
 
-# 视频被 .gitignore 忽略（main 设计），在 gh-pages 需强制纳入
+# gh-pages 分支已无 .gitignore（find 清空时删除），git add -A 足够纳入视频
 git add -A
-git add -f site/assets/videos/*.mp4 site/assets/videos/*_poster.png
 
 if git diff --cached --quiet; then
   echo "==> 无变化，跳过 commit"
