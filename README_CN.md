@@ -1,17 +1,29 @@
 # 🐻‍❄️ Polar Bear
 
 <!-- BEGIN shared:hero -->
-**一条命令，把全新终端变成好看、开箱即用的样子。**
+**装完只需 3 条命令，你的终端就会长这样。**
+
+旧配置自动备份 · 可 --dry-run 预览 · 重复运行不会弄坏环境
+
+不是又一个 dotfiles 仓库，而是一个可预览、可重跑、装不坏的终端安装器。
 
 [🇬🇧 English](README.md) · [官网](https://webxiongda.github.io/terminal-setup/) · [⭐ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
 <!-- END shared:hero -->
 
 <!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/preview.png" width="720" alt="一键配置后的 Polar Bear 终端：Catppuccin 提示符、eza、bat、lazygit">
+  <img src="assets/before-after.png" width="720" alt="终端装完前后对照：左侧朴素终端，右侧带图标、高亮与 git 分支">
 </p>
-<p align="center"><sub>装好前 → 装好后，中间只隔一条命令。 [看视频讲解 →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<p align="center"><sub>BEFORE → AFTER，中间只隔 3 条命令。 [看视频讲解 →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
 <!-- END shared:preview -->
+
+<!-- BEGIN shared:get3 -->
+**装完得到 3 件事**
+
+1. 🎨 彩色提示符：Catppuccin 主题 + 分支状态
+2. 🚀 现代 ls · cat：eza / bat 带图标与高亮
+3. 🧭 智能跳转 + 模糊搜索：zoxide / fzf
+<!-- END shared:get3 -->
 
 <!-- BEGIN shared:install -->
 ## 快速开始
@@ -42,7 +54,7 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 
 <!-- BEGIN shared:features -->
 - 🎨 **主题统一** — Starship 提示符自动跟随系统明暗模式（Latte / Mocha），配色与字体一次到位。
-- 🚀 **现代 CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用。
+- 🚀 **现代 CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用；fd = 更快的 find、rg = 更快的 grep，不覆盖系统 find/grep（避免 flag 冲突）。
 - 📦 **一键安装** — 零配置，几分钟搞定；本机自定义放 ~/.zshrc.local，重跑不丢。
 - 🖥 **不绑终端** — 用你现有的终端就行，推荐 Warp（可选，脚本不安装）。
 - 🔤 **中文友好** — Maple Mono NF CN 字体，图标不乱码、中文清晰。
@@ -94,6 +106,22 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 <!-- END shared:tools -->
 
 </details>
+
+<!-- BEGIN shared:convert -->
+## 适合谁
+
+- 刚拿到新 Mac，想一次把终端配好
+- 重装系统 / 换了电脑，需要重建熟悉的开发环境
+- 想统一多机配置，又不想把私有设置写进公共 dotfiles
+
+### 如果你觉得好用
+
+顺手点个 ⭐，让更多人能搜到它 —— 不强制，纯粹是让好工具被看见。
+
+### 想改自己的 dotfiles？
+
+可以直接 fork 这个仓库，按自己的习惯改 configs/ 与 setup.sh；你的改动只留在自己的仓库，不影响上游。
+<!-- END shared:convert -->
 
 ## 文档与链接
 

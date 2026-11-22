@@ -60,6 +60,7 @@ function dictFor(lang, c) {
   c.platforms.forEach((p, n) => pairs.push([`platforms.n${n + 1}`, `${p.icon} ${p.name}`], [`platforms.p${n + 1}`, p.status]));
   c['install.options'].forEach((o, n) => pairs.push([`install.opt${n + 1}`, `${o.flag} — ${o.desc}`]));
   c['what.steps'].forEach((s, n) => pairs.push([`what.s${n + 1}`, s]));
+  c['hero.get3'].forEach((s, n) => pairs.push([`hero.g${n + 1}`, s]));
   c.tools.forEach((t, n) => pairs.push([`tools.t${n + 1}`, `${t.name} — ${t.desc}`]));
   const body = pairs.map(([k, v]) => `      ${JSON.stringify(k)}: ${JSON.stringify(v)},`).join('\n');
   return `    ${lang}: {\n${body}\n    }`;
@@ -106,14 +107,70 @@ function heroBlock(lang, c) {
   const link = lang === 'zh'
     ? `[🇬🇧 English](README.md) · [官网](${SITE_URL}) · [⭐ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)`
     : `[🇨🇳 中文](README_CN.md) · [Website](${SITE_URL}) · [★ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)`;
-  return `**${c['hero.value']}**\n\n${link}`;
+  return [
+    `**${c['hero.title']}**`,
+    '',
+    c['hero.subtitle'],
+    '',
+    c['hero.value'],
+    '',
+    link,
+  ].join('\n');
 }
 function previewBlock(c) {
   return [
     '<p align="center">',
-    `  <img src="assets/preview.png" width="720" alt="${escHtml(c['hero.previewAlt'])}">`,
+    `  <img src="assets/before-after.png" width="720" alt="${escHtml(c['hero.previewAlt'])}">`,
     '</p>',
     `<p align="center"><sub>${c['hero.caption']} [${c['hero.videoLink']}](${VIDEO_URL})</sub></p>`,
+  ].join('\n');
+}
+
+function get3Block(c) {
+  return [
+    `**${c['hero.get3Title']}**`,
+    '',
+    ...c['hero.get3'].map((s, i) => `${i + 1}. ${s}`),
+  ].join('\n');
+}
+
+function convertBlock(c) {
+  return [
+    `## ${c['convert.whoTitle']}`,
+    '',
+    ...c['convert.who'].map((s) => `- ${s}`),
+    '',
+    `### ${c['convert.starTitle']}`,
+    '',
+    c['convert.star'],
+    '',
+    `### ${c['convert.forkTitle']}`,
+    '',
+    c['convert.fork'],
+  ].join('\n');
+}
+
+function siteHeroBlock(c) {
+  return [
+    '      <p class="eyebrow" data-i18n="hero.eyebrow">' + escHtml(c['hero.eyebrow']) + '</p>',
+    '      <h1 data-i18n="hero.title">' + escHtml(c['hero.title']) + '</h1>',
+    '      <p class="subtitle" data-i18n="hero.subtitle">' + escHtml(c['hero.subtitle']) + '</p>',
+    '      <p class="lead" data-i18n="hero.value">' + escHtml(c['hero.value']) + '</p>',
+    '      <p class="muted" data-i18n="hero.lead">' + escHtml(c['hero.lead']) + '</p>',
+    '      <h2 class="get3-title" data-i18n="hero.get3Title">' + escHtml(c['hero.get3Title']) + '</h2>',
+    '      <ul class="get3-list">',
+    ...c['hero.get3'].map((s, i) => '        <li data-i18n="hero.g' + (i + 1) + '">' + escHtml(s) + '</li>'),
+    '      </ul>',
+    '      <div class="hero-actions">',
+    '        <a class="btn primary" href="#start" data-i18n="hero.cta">立即安装</a>',
+    '        <a class="btn ghost" href="https://github.com/webxiongda/terminal-setup" target="_blank" rel="noopener">GitHub ★</a>',
+    '      </div>',
+    '      <figure class="hero-video">',
+    '        <img class="hero-preview" src="assets/before-after.png" width="1440" height="860"',
+    '             style="max-width:100%;height:auto;display:block;margin:0 auto"',
+    '             data-i18n-alt="hero.previewAlt" alt="' + escHtml(c['hero.previewAlt']) + '">',
+    '        <figcaption data-i18n="hero.caption">' + escHtml(c['hero.caption']) + '</figcaption>',
+    '      </figure>',
   ].join('\n');
 }
 function installBlock(c) {
@@ -158,26 +215,33 @@ for (const [lang, c, rel] of [['zh', zh, 'README_CN.md'], ['en', en, 'README.md'
   const sections = {
     hero: heroBlock(lang, c),
     preview: previewBlock(c),
+    get3: get3Block(c),
     install: installBlock(c),
     platforms: platformsBlock(c),
     features: featuresBlock(c),
     what: whatBlock(c),
     tools: toolsBlock(c),
+    convert: convertBlock(c),
   };
   for (const [name, body] of Object.entries(sections)) {
     replaceMarked(rel, `<!-- BEGIN shared:${name} -->`, `<!-- END shared:${name} -->`, body);
   }
 }
 
-/* ---------- 官网静态封面：与 README 共用同一张 assets/preview.png ---------- */
+/* ---------- index.html hero：双钩子 + 3 件事 + before/after 图 ---------- */
+replaceMarked('site/index.html', '      <!-- BEGIN shared:hero -->', '      <!-- END shared:hero -->', siteHeroBlock(zh));
+
+/* ---------- 官网静态图：与 README 共用 assets 下的两张图 ---------- */
 {
   const dstDir = path.join(ROOT, 'site/assets');
   fs.mkdirSync(dstDir, { recursive: true });
-  const dst = path.join(dstDir, 'preview.png');
-  const from = fs.readFileSync(path.join(ROOT, 'assets/preview.png'));
-  if (!fs.existsSync(dst) || !fs.readFileSync(dst).equals(from)) {
-    fs.writeFileSync(dst, from);
-    touched.add('site/assets/preview.png');
+  for (const name of ['preview.png', 'before-after.png']) {
+    const dst = path.join(dstDir, name);
+    const from = fs.readFileSync(path.join(ROOT, 'assets', name));
+    if (!fs.existsSync(dst) || !fs.readFileSync(dst).equals(from)) {
+      fs.writeFileSync(dst, from);
+      touched.add(`site/assets/${name}`);
+    }
   }
 }
 

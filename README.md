@@ -1,17 +1,29 @@
 # 🐻‍❄️ Polar Bear
 
 <!-- BEGIN shared:hero -->
-**One command turns a fresh shell into a beautiful, ready-to-use terminal.**
+**After installing, type just 3 commands — and your terminal looks like this.**
+
+Old configs auto-backed up · Preview with --dry-run · Safe to re-run
+
+Not another dotfiles repo — a previewable, repeatable installer that won't break your setup.
 
 [🇨🇳 中文](README_CN.md) · [Website](https://webxiongda.github.io/terminal-setup/) · [★ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
 <!-- END shared:hero -->
 
 <!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/preview.png" width="720" alt="Polar Bear terminal after one-command setup: Catppuccin prompt, eza, bat, lazygit">
+  <img src="assets/before-after.png" width="720" alt="Terminal before and after setup: plain shell on the left, icons / highlights / git branch on the right">
 </p>
-<p align="center"><sub>Before → after, one command apart. [Watch the video guide →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<p align="center"><sub>BEFORE → AFTER, just 3 commands away. [Watch the video guide →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
 <!-- END shared:preview -->
+
+<!-- BEGIN shared:get3 -->
+**What you get in 3 things**
+
+1. 🎨 Colorful prompt: Catppuccin theme + git branch
+2. 🚀 Modern ls · cat: eza / bat with icons & highlights
+3. 🧭 Smart jumps + fuzzy search: zoxide / fzf
+<!-- END shared:get3 -->
 
 <!-- BEGIN shared:install -->
 ## Quick Start
@@ -42,7 +54,7 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 
 <!-- BEGIN shared:features -->
 - 🎨 **Unified theme** — Starship follows your system's light/dark mode (Latte / Mocha); colors and font are set in one go.
-- 🚀 **Modern CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready to use.
+- 🚀 **Modern CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready; fd = faster find, rg = faster grep — system find/grep are left untouched to avoid flag conflicts.
 - 📦 **One-command install** — Zero config, ready in minutes. Local tweaks live in ~/.zshrc.local and survive re-runs.
 - 🖥 **Terminal agnostic** — Use your existing terminal; Warp recommended (optional, not installed).
 - 🔤 **Chinese friendly** — Maple Mono NF CN font: crisp glyphs, icons and Chinese text.
@@ -94,6 +106,22 @@ Touches only what it should — existing configs are backed up first.
 <!-- END shared:tools -->
 
 </details>
+
+<!-- BEGIN shared:convert -->
+## Who it's for
+
+- A brand-new Mac and you want the terminal set up in one go
+- Reinstalling or switching machines and rebuilding a familiar dev environment
+- Keeping several machines consistent without putting private tweaks into public dotfiles
+
+### If it helps you
+
+A ⭐ helps others find it in search — entirely optional, just a way to let a good tool be seen.
+
+### Want your own dotfiles?
+
+Fork the repo and tailor configs/ and setup.sh to your own habits; your changes stay in your fork and never affect upstream.
+<!-- END shared:convert -->
 
 ## Docs & Links
 
