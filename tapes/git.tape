@@ -1,17 +1,21 @@
-# Polar Bear — 主题与 Git 工作流演示 (video 3/3)
-# Regenerate:  cd <repo> && vhs tapes/git.tape
-# Produces:    site/assets/videos/git.mp4
+# Polar Bear — 主题与 Git 工作流演示 (video 3/4)
+# 命令白名单（画面输入）：echo / git status / git diff / lg(=lazygit)
+#   快捷键：Ctrl+C（退出 lazygit）
+#   Hide 中准备：clear、向 .gitignore 追加一行制造一屏内可见 diff、录制后原样还原
+# 预期成功条件：git diff 输出含 delta 高亮的新增行；lg 停留 >=3s；
+#   每条输入退出码 0、有可见输出；无 command not found / 空输出 / 错误堆栈。
+# 预演记录见 tapes/rehearsal-log.md（2026-11-22）。
 
 Output site/assets/videos/git.mp4
 
 Set Shell "zsh"
 Set FontFamily "Maple Mono NF CN"
-Set FontSize 18
+Set FontSize 22
 Set Width 1200
 Set Height 640
 Set Padding 20
 Set Theme "Catppuccin Mocha"
-Set TypingSpeed 35ms
+Set TypingSpeed 20ms
 Set CursorBlink false
 
 Require starship
@@ -19,40 +23,47 @@ Require lazygit
 Require delta
 Require git
 Require zsh
+
+# 画面外制造一个最小 diff（一行），保证 git diff 有可见、短小的真实输出
 Hide
-Type "cd ~/Desktop/GitHub项目/06-开发工具/terminal-setup"
-Enter
 Type "clear"
+Enter
+Type "echo '# git-diff-demo' >> .gitignore"
 Enter
 Show
 
-# 标题卡
-Type "# Catppuccin 提示符 + lazygit + delta"
-Sleep 600ms
-Enter
-Sleep 1s
-
-# 1) 提示符与 git 状态（starship 在提示符显示分支/状态）
-Type "git status --short"
+Type "echo 'git workflow'"
 Sleep 400ms
 Enter
-Sleep 1800ms
+Sleep 2000ms
 
-# 2) lazygit TUI
-Type "lazygit"
-Sleep 500ms
+# 1) Catppuccin 提示符 + 工作区状态
+Type "git status"
+Sleep 300ms
 Enter
-Sleep 4000ms
+Sleep 3000ms
+
+# 2) delta 高亮的 git diff（一屏内）
+Type "git diff"
+Sleep 400ms
+Enter
+Sleep 4500ms
+
+# 3) lazygit TUI，停留 >=3s
+Type "lg"
+Sleep 300ms
+Enter
+Sleep 6000ms
 Ctrl+C
 Sleep 1000ms
 
-# 3) delta 高亮 diff（显式调用，避免 pager 配置差异）
-Type "git log -p -1 -- setup.sh | delta | head -40"
-Sleep 500ms
+# 4) 回到干净工作区：画面外还原 .gitignore
+Hide
+Type "git checkout -- .gitignore"
 Enter
-Sleep 4000ms
+Show
 
-Type "echo 'Polar Bear — Git, beautiful.'"
-Sleep 400ms
+Type "git status"
+Sleep 300ms
 Enter
 Sleep 2500ms

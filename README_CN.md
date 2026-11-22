@@ -1,200 +1,119 @@
 # 🐻‍❄️ Polar Bear
 
-一键配置终端环境，支持 **macOS**、**Debian/Ubuntu** 和 **Windows (WSL)**。新机器跑一个脚本，几分钟搞定完整终端。
+<!-- BEGIN shared:hero -->
+**一条命令，把全新终端变成好看、开箱即用的样子。**
 
-**🇬🇧 [English Version](README.md)**
+[🇬🇧 English](README.md) · [官网](https://webxiongda.github.io/terminal-setup/) · [⭐ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
+<!-- END shared:hero -->
 
+<!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/zsh.png" width="80" alt="Zsh">
-  &nbsp;&nbsp;
-  <img src="assets/starship.png" width="80" alt="Starship">
+  <img src="assets/preview.png" width="720" alt="一键配置后的 Polar Bear 终端：Catppuccin 提示符、eza、bat、lazygit">
 </p>
-<!-- 核心介绍：先用一句话告诉读者动图在演示什么，再看动画 -->
-<p align="center">
-  <b>一条命令，把全新的 macOS / Linux 终端变成这套开箱即用的样子。</b><br>
-  下面的 30 秒动画展示了装好后日常使用的样子：<code>eza</code> 带图标列目录、<code>bat</code> 高亮看文件、
-  <code>zoxide</code> 智能跳转、<code>fzf</code> 模糊搜索、<code>lazygit</code> 与 <code>fastfetch</code>——
-  以及会跟随明暗模式切换的 Catppuccin <code>Starship</code> 提示符。
-</p>
+<p align="center"><sub>装好前 → 装好后，中间只隔一条命令。 [看视频讲解 →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<!-- END shared:preview -->
 
-<p align="center">
-  <img src="assets/demo.gif" width="720" alt="演示 — 一键配置后的终端日常使用动画">
-</p>
+<!-- BEGIN shared:install -->
+## 快速开始
 
-<p align="center">
-  <sub>动图由 <a href="https://github.com/charmbracelet/vhs">VHS</a> 根据 <a href="assets/demo.tape">assets/demo.tape</a> 可复现生成，见文末「重新生成演示动图」。</sub>
-</p>
+> **先看脚本再运行。** 下面两条命令都会安装工具并写入 dotfiles；建议先打开 [setup.sh](setup.sh) 审查一遍，再选一条执行。
 
-## ✨ 特性亮点
+```bash
+# 一行命令 — 自动 clone 并配置
+bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
 
-- 🎨 **Catppuccin 主题** — Starship 提示符自动跟随系统明暗模式 (Latte / Mocha)
-- 🚀 **Starship 提示符** — Git、语言环境、耗时、conda 一目了然
-- 🔤 **Maple Mono NF CN** — 支持中文的 Nerd Font，图标不乱码
-- 🧰 **现代 CLI 全家桶** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta…
-- 🖥 **不绑定终端** — 用你现有的终端就行，推荐 Warp（可选，脚本不安装）
-- 📦 **一键安装** — 零配置，5 分钟搞定；本机自定义放在 `~/.zshrc.local`，重跑不丢
+# 或者克隆、审查 setup.sh 后再运行
+git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup && ./setup.sh
+```
+<!-- END shared:install -->
 
+<!-- BEGIN shared:platforms -->
 ## 支持平台
 
 | 平台 | 状态 | 包管理器 |
-|------|------|---------|
+|---|---|---|
 | 🍎 **macOS** | ✅ 主力平台 — 长期使用验证 | Homebrew |
 | 🐧 **Debian / Ubuntu** | 🧪 实验性 — 可用但未经长期测试 | apt + 内置二进制 |
 | 🪟 **Windows (WSL)** | 🧪 实验性 — 可用但未经长期测试 | apt（WSL 内部） |
 | 🪟 **Windows (原生)** | ⛔ 不支持 | 请先安装 WSL |
+<!-- END shared:platforms -->
 
-## 快速开始
+## 核心特性
 
-### macOS
+<!-- BEGIN shared:features -->
+- 🎨 **主题统一** — Starship 提示符自动跟随系统明暗模式（Latte / Mocha），配色与字体一次到位。
+- 🚀 **现代 CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用。
+- 📦 **一键安装** — 零配置，几分钟搞定；本机自定义放 ~/.zshrc.local，重跑不丢。
+- 🖥 **不绑终端** — 用你现有的终端就行，推荐 Warp（可选，脚本不安装）。
+- 🔤 **中文友好** — Maple Mono NF CN 字体，图标不乱码、中文清晰。
+- 🧪 **可预览** — --dry-run 先打印每一步，非交互环境自动跳过问询不卡死。
+<!-- END shared:features -->
 
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
+## 它做了什么
 
-### Debian / Ubuntu
+<!-- BEGIN shared:what -->
+只碰该碰的地方，已有配置先备份。
 
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
+1. 安装包管理器（macOS 用 Homebrew，Linux 用 apt）。
+2. 安装 Zsh 与插件：自动建议、语法高亮、补全。
+3. 安装现代 CLI 工具，并部署 Catppuccin Mocha 主题的 Starship 提示符。
+4. 部署配置文件；已有配置先按时间戳备份，本机自定义写入 ~/.zshrc.local。
+<!-- END shared:what -->
 
-### Windows (WSL)
+<details>
+<summary>完整工具清单（25+）</summary>
 
-先安装 WSL（如果还没有）：
-```powershell
-# 在 PowerShell（管理员）中运行
-wsl --install
-```
-
-然后在 WSL 中：
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
-
-### 选项
-
-```bash
-./setup.sh --skip-node  # 跳过 fnm + Node.js 安装
-./setup.sh --dry-run    # 预览会做什么（不做任何改动）
-./setup.sh --reinstall  # 强制重新安装所有工具
-```
-
-一行命令（自动 clone）：
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
-```
-
-## 工具栈
-
+<!-- BEGIN shared:tools -->
 | 组件 | 说明 |
-|------|------|
-| **终端模拟器** | 自选 —— 推荐 [Warp](https://www.warp.dev)（可选，本脚本不安装） |
-| **Zsh** | Shell，带有自动建议 + 语法高亮 + 补全 |
-| **[Starship](https://starship.rs)** | 跨 Shell 提示符（Catppuccin Mocha 主题） |
-| **Maple Mono NF CN** | Nerd Font，中文支持，图标 + Powerline 字形 |
-| **[bat](https://github.com/sharkdp/bat)** | 带语法高亮和行号的 `cat` |
-| **[eza](https://github.com/eza-community/eza)** | 带图标、git 状态、树形视图的 `ls` |
-| **[fd](https://github.com/sharkdp/fd)** | 更快更直观的 `find` |
-| **[ripgrep](https://github.com/BurntSushi/ripgrep)** | 比 `grep` 快几个数量级 |
-| **[fzf](https://github.com/junegunn/fzf)** | 模糊查找器（Ctrl+R / Ctrl+T / Alt+C） |
-| **[btop](https://github.com/aristocratos/btop)** | 漂亮的系统监控 |
-| **[zoxide](https://github.com/ajeetdsouza/zoxide)** | 智能 `cd`，学习你的习惯 |
-| **[jq](https://github.com/jqlang/jq)** | JSON 处理器 |
-| **[tldr](https://github.com/tldr-pages/tldr)** | 简化版 man 手册，附带示例 |
-| **[delta](https://github.com/dandavison/delta)** | 带语法高亮的 git diff |
-| **[lazygit](https://github.com/jesseduffield/lazygit)** | Git 终端 UI |
-| **[fnm](https://github.com/Schniz/fnm)** | 快速 Node 版本管理器（Rust 编写） |
-| **[Zellij](https://zellij.dev)** | 现代终端复用器（可选） |
-| **[fastfetch](https://github.com/fastfetch-cli/fastfetch)** | 极快的系统信息展示（neofetch 现代替代） |
-| **[procs](https://github.com/dalance/procs)** | 彩色 `ps` 替代 |
-| **[sd](https://github.com/chmln/sd)** | 直观的 `sed` 替代 |
-| **[hyperfine](https://github.com/sharkdp/hyperfine)** | 命令行基准测试工具 |
-| **[uv](https://github.com/astral-sh/uv)** | 极快的 Python 包管理器 |
+|---|---|
+| [Starship](https://starship.rs) | 跨 Shell 提示符（Catppuccin Mocha） |
+| [Zsh](https://www.zsh.org) | 带自动建议、语法高亮与补全的 Shell |
+| [zsh plugins](https://github.com/zsh-users) | autosuggestions / syntax-highlighting / completions |
+| [Maple Mono NF CN](https://github.com/subframe7536/maple-font) | 支持中文的 Nerd Font，图标与 Powerline 字形齐全 |
+| [eza](https://github.com/eza-community/eza) | 带图标、git 状态、树形视图的 ls |
+| [bat](https://github.com/sharkdp/bat) | 带语法高亮和行号的 cat |
+| [fd](https://github.com/sharkdp/fd) | 更快更直观的 find |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | 比 grep 快几个数量级 |
+| [fzf](https://github.com/junegunn/fzf) | 模糊查找器（Ctrl+R / Ctrl+T / Alt+C） |
+| [btop](https://github.com/aristocratos/btop) | 漂亮的系统监控 TUI |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | 更聪明的 cd，学习你的习惯 |
+| [jq](https://github.com/jqlang/jq) | JSON 处理器 |
+| [tldr](https://github.com/tldr-pages/tldr) | 带示例的简化版 man 手册 |
+| [delta](https://github.com/dandavison/delta) | 带语法高亮的 git diff |
+| [lazygit](https://github.com/jesseduffield/lazygit) | Git 终端 UI |
+| [fnm](https://github.com/Schniz/fnm) | 快速 Node 版本管理器（Rust） |
+| [Zellij](https://zellij.dev) | 现代终端复用器（可选） |
+| [fastfetch](https://github.com/fastfetch-cli/fastfetch) | 极快的系统信息展示 |
+| [procs](https://github.com/dalance/procs) | 彩色 ps 替代 |
+| [sd](https://github.com/chmln/sd) | 直观的 sed 替代 |
+| [hyperfine](https://github.com/sharkdp/hyperfine) | 命令行基准测试 |
+| [uv](https://github.com/astral-sh/uv) | 极快的 Python 包管理器 |
+| [git + delta](https://git-scm.com) | git diff 默认走 delta 高亮 |
+| [Mesh / Meslo 字体](https://github.com/meslo-fonts/MesloLGS-NF) | Linux 上内置的 Nerd Font 回退 |
+| [你的终端](https://www.warp.dev) | 脚本不安装终端模拟器，推荐 Warp（可选） |
+<!-- END shared:tools -->
 
-## Warp 快捷键速查（推荐终端，可选）
+</details>
 
-> 本脚本不安装终端模拟器 —— 用你现有的终端就行。以下为推荐的 **Warp** 的常用快捷键。
-> `super` = ⌘ Cmd | `alt` = ⌥ Option | `ctrl` = ⌃ Control | `shift` = ⇧ Shift
+## 文档与链接
 
-| 分类 | 快捷键 | 功能 |
-|------|--------|------|
-| 分屏 | `Cmd+D` | 向右新建分屏 |
-| | `Cmd+Shift+D` | 向下新建分屏 |
-| | `Cmd+Opt+↑↓←→` | 在分屏间跳转 |
-| | `Cmd+Shift+Enter` | 最大化/还原当前分屏 |
-| 标签 | `Cmd+T` | 新建标签 |
-| | `Cmd+1~8` | 切换标签 |
-| | `Shift+Cmd+{` / `Shift+Cmd+}` | 上/下一个标签 |
-| 面板 | `Cmd+P` | 命令面板 |
-| | `Shift+Cmd+P` | 导航面板 |
-| Block | `Cmd+↑/↓` | 上/下一个命令块 |
-| | `Cmd+I` | 重新输入选中的命令 |
-| 字体 | `Cmd+=` / `Cmd+-` | 放大/缩小 |
-| | `Cmd+0` | 重置大小 |
-| 搜索 | `Cmd+F` / `Cmd+G` | 查找 / 下一个匹配 |
-| | `Ctrl+R` | Warp 自带命令搜索（会占用 fzf 的 `Ctrl+R`） |
-| 其他 | `Cmd+K` | 清空 Blocks |
-| | `Ctrl+L` | 清屏 |
+- [官网](https://webxiongda.github.io/terminal-setup/) — 特性展示与视频讲解
+- [English](README.md) · [英文说明、平台细节与排障都在这里](README.md)
+- [快捷键速查手册](docs/快捷键速查手册.md) · [开发大纲](docs/开发大纲.md)
+- [视频讲解（官网）](https://webxiongda.github.io/terminal-setup/#videos)
+- [设计规格](docs/superpowers/specs/2026-11-22-README与官网门面优化设计.md)
 
-> ⚠️ Warp 内置的 `Ctrl+R` 优先于 `~/.zshrc` 里 fzf 的绑定。想用 fzf 的历史搜索，
-> 用 `Cmd+P` 搜 "command search" 改掉或关掉 Warp 的绑定。
+<details>
+<summary>安全 / 卸载 / 排障 / 许可</summary>
 
-## 别名 / 缩写
+### 安全与备份
 
-| 快捷方式 | 展开为 |
-|----------|--------|
-| `ls` | `eza --icons --group-directories-first` |
-| `ll` | `eza -lha --icons --group-directories-first` |
-| `la` | `eza -a --icons` |
-| `lt` | `eza --tree --icons --level=2` |
-| `cat` | `bat` |
-| `find` | `fd` |
-| `grep` | `rg` |
-| `top` | `btop` |
-| `lg` | `lazygit` |
-| `c` | `clear` |
+脚本覆盖配置前会按时间戳备份：
+`~/.zshrc.bak.<时间戳>`、`~/.config/starship.toml.bak.<时间戳>`。
+本机自定义设置放在 `~/.zshrc.local`，总是最后加载且不会被覆盖。
+运行前请先读 [setup.sh](setup.sh)，用 `--dry-run` 可以只预览、不改任何东西。
 
-## fzf 快捷键
-
-| 按键 | 功能 |
-|------|------|
-| `Ctrl+R` | 模糊搜索命令历史 |
-| `Ctrl+T` | 模糊查找文件（用 `fd` 作为后端） |
-| `Alt+C` | 模糊进入目录 |
-
-## fnm — Node 版本管理
-
-```bash
-fnm install 22            # 安装 Node 22
-fnm install --lts         # 安装最新 LTS
-fnm default 22            # 设置默认版本
-fnm use 22                # 当前 shell 切换
-echo "22" > .node-version # 进入目录自动切换
-```
-
-## SSH Key 切换
-
-两种 Shell 配置都内置了 `set-ssh-key` 函数：
-
-```bash
-set-ssh-key my-key-name     # 清空 agent，加载 ~/.ssh/my-key-name
-set-ssh-key                  # key 不存在时列出所有可用 key
-```
-
-## 配置文件位置
-
-| 文件 | 路径 |
-|------|------|
-| Starship | `~/.config/starship.toml` |
-| Zsh | `~/.zshrc` |
-| Zsh（本机自定义） | `~/.zshrc.local` — 重跑 `setup.sh` 不会覆盖 |
-
----
-
-## 🔁 重跑、更新与卸载
+### 重跑与更新
 
 ```bash
 ./setup.sh --reinstall   # 重新应用全部配置，忽略「已安装」检查
@@ -202,13 +121,15 @@ set-ssh-key                  # key 不存在时列出所有可用 key
 ./setup.sh --skip-node   # 跳过 fnm + Node.js（如果你想自己管理 Node）
 ```
 
-脚本**没有内置卸载命令**。它只负责安装工具和部署配置，如需还原请手动处理：
+### 卸载
 
-- 从带时间戳的备份恢复配置（`~/.zshrc.bak.<时间戳>`、`~/.config/starship.toml.bak.<时间戳>`）。
-- 用包管理器卸载已安装的工具（macOS 用 `brew uninstall <工具名>`，Debian/Ubuntu 用 `sudo apt remove <工具名>`）。
+脚本没有内置卸载命令，它只负责安装工具和部署配置：
+
+- 从带时间戳的备份恢复配置。
+- 用包管理器卸载工具（macOS 用 `brew uninstall <工具名>`，Debian/Ubuntu 用 `sudo apt remove <工具名>`）。
 - 如果不再需要本机自定义配置，删除 `~/.zshrc.local`。
 
-## 🛠️ 常见问题排查
+### 常见问题排查
 
 | 现象 | 解决办法 |
 |------|----------|
@@ -216,24 +137,12 @@ set-ssh-key                  # key 不存在时列出所有可用 key
 | Linux 上 `bat: command not found` | 脚本已建立 `batcat` → `bat` 软链；执行 `hash -r` 或重开 shell。 |
 | Linux 上 `fd: command not found` | 脚本已建立 `fdfind` → `fd` 软链；重开 shell 即可。 |
 | 提示符颜色不对 / 显示异常 | 确认终端支持 24 位色，然后 `exec zsh` 重新加载配置。 |
-| 装完后 `eza` 找不到 | 脚本安装路径可能还没进 `PATH`——重开终端，或用 `--reinstall` 重跑。 |
+| 装完后 `eza` 找不到 | 重开终端，或用 `--reinstall` 重跑。 |
 | 中文显示成豆腐块 | 使用 Maple Mono NF CN / MesloLGS NF，并确认 locale 为 UTF-8（`locale` 命令查看）。 |
 | 在原生 Windows（非 WSL）下运行 | 原生 Windows 不支持；先 `wsl --install` 安装 WSL，再在 WSL 里运行脚本。 |
 
-
-## 🎬 重新生成演示动图
-
-`assets/demo.gif` 不是录屏，而是一段用 [VHS](https://github.com/charmbracelet/vhs) 编写的可复现脚本。改命令只需改 `assets/demo.tape`，重新渲染即可，保证介绍和工具栈始终同步。
-
-```bash
-brew install vhs            # 需同时具备 ttyd 与 ffmpeg
-vhs assets/demo.tape        # 覆盖生成 assets/demo.gif
-```
-
-想换成 MP4/WebM，在 tape 里多写一行 `Output assets/demo.mp4` 再重跑即可。
-
----
-
-## License
+### 许可
 
 MIT
+
+</details>

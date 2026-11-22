@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Polar Bear — terminal-setup</title>
-  <meta name="description" content="一键配置完整的 macOS / Linux 终端环境：Zsh + Starship + 现代 CLI 全家桶。">
+  <meta name="description" content="Polar Bear sets up a fresh macOS or Linux terminal in one command: Catppuccin Starship prompt, Zsh, eza, bat, fzf, zoxide, lazygit and more.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,42 +24,43 @@
   <header class="hero" id="top">
     <div class="hero-inner">
       <p class="eyebrow" data-i18n="hero.eyebrow">一条命令 · 几分钟搞定</p>
-      <h1 data-i18n="hero.title">把全新终端，变成开箱即用的样子</h1>
-      <p class="lead" data-i18n="hero.lead">Zsh + Starship（Catppuccin 主题）+ eza / bat / fzf / zoxide / lazygit 等现代 CLI，macOS 与 Linux 一键安装。</p>
+      <h1 data-i18n="hero.title">更好的终端，只差一条命令。</h1>
+      <p class="lead" data-i18n="hero.value">一条命令，把全新终端变成好看、开箱即用的样子。</p>
+      <p class="muted" data-i18n="hero.lead">Polar Bear 一键装好 Zsh、Catppuccin 主题的 Starship 提示符与现代 CLI。</p>
       <div class="hero-actions">
         <a class="btn primary" href="#start" data-i18n="hero.cta">立即安装</a>
         <a class="btn ghost" href="https://github.com/webxiongda/terminal-setup" target="_blank" rel="noopener">GitHub ★</a>
       </div>
       <figure class="hero-video">
-        <video controls preload="metadata" poster="assets/videos/daily_poster.png">
-          <source src="assets/videos/daily.mp4" type="video/mp4">
-          <span data-i18n="video.unsupported">你的浏览器不支持视频播放。</span>
-        </video>
-        <figcaption data-i18n="hero.caption">30 秒看装好后的日常使用</figcaption>
+        <img class="hero-preview" src="assets/preview.png" width="1280" height="760"
+             style="max-width:100%;height:auto;display:block;margin:0 auto"
+             data-i18n-alt="hero.previewAlt"
+             alt="一键配置后的 Polar Bear 终端：Catppuccin 提示符、eza、bat、lazygit">
+        <figcaption data-i18n="hero.caption">装好前 → 装好后，中间只隔一条命令。</figcaption>
       </figure>
     </div>
   </header>
 
   <section class="section" id="features">
-    <h2 data-i18n="features.title">特性亮点</h2>
+    <h2 data-i18n="features.title">核心特性</h2>
     <div class="grid-3">
-      <article class="card"><h3 data-i18n="features.f1t">🎨 主题统一</h3><p data-i18n="features.f1d">Starship 提示符自动跟随系统明暗模式（Latte / Mocha）。</p></article>
+      <article class="card"><h3 data-i18n="features.f1t">🎨 主题统一</h3><p data-i18n="features.f1d">Starship 提示符自动跟随系统明暗模式。</p></article>
       <article class="card"><h3 data-i18n="features.f2t">🚀 现代 CLI</h3><p data-i18n="features.f2d">eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖。</p></article>
-      <article class="card"><h3 data-i18n="features.f3t">📦 一键安装</h3><p data-i18n="features.f3d">零配置，5 分钟搞定；本机自定义放 ~/.zshrc.local，重跑不丢。</p></article>
-      <article class="card"><h3 data-i18n="features.f4t">🖥 不绑终端</h3><p data-i18n="features.f4d">用你现有的终端就行，推荐 Warp（可选，脚本不安装）。</p></article>
+      <article class="card"><h3 data-i18n="features.f3t">📦 一键安装</h3><p data-i18n="features.f3d">零配置，几分钟搞定；本机自定义不丢。</p></article>
+      <article class="card"><h3 data-i18n="features.f4t">🖥 不绑终端</h3><p data-i18n="features.f4d">用你现有的终端就行，推荐 Warp（可选）。</p></article>
       <article class="card"><h3 data-i18n="features.f5t">🔤 中文友好</h3><p data-i18n="features.f5d">Maple Mono NF CN 字体，图标不乱码、中文清晰。</p></article>
-      <article class="card"><h3 data-i18n="features.f6t">🧪 可预览</h3><p data-i18n="features.f6d">--dry-run 预览每一步，非交互下自动跳过问询不卡死。</p></article>
+      <article class="card"><h3 data-i18n="features.f6t">🧪 可预览</h3><p data-i18n="features.f6d">--dry-run 先打印每一步，非交互不卡死。</p></article>
     </div>
   </section>
 
   <section class="section" id="videos">
-    <h2 data-i18n="videos.title">三步视频讲解</h2>
+    <h2 data-i18n="videos.title">进阶视频讲解</h2>
     <div class="video-list">
       <article class="video-card">
         <div class="video-meta">
           <span class="tag">01</span>
           <h3 data-i18n="videos.v1t">一键安装</h3>
-          <p data-i18n="videos.v1d">两条命令装好整套终端；dry-run 预览每一步，非交互下自动跳过问询、绝不卡死。</p>
+          <p data-i18n="videos.v1d">一条命令自动 clone，或先审查 setup.sh。</p>
         </div>
         <video controls preload="metadata" poster="assets/videos/install_poster.png">
           <source src="assets/videos/install.mp4" type="video/mp4">
@@ -70,7 +71,7 @@
         <div class="video-meta">
           <span class="tag">02</span>
           <h3 data-i18n="videos.v2t">日常工具</h3>
-          <p data-i18n="videos.v2d">eza 列目录带图标与 git 状态、bat 高亮看文件、zoxide 智能跳转、fzf 模糊搜索、fastfetch 系统信息。</p>
+          <p data-i18n="videos.v2d">ls / cat / z 跳转 / fzf / top / fastfetch —— 最短 alias。</p>
         </div>
         <video controls preload="metadata" poster="assets/videos/daily_poster.png">
           <source src="assets/videos/daily.mp4" type="video/mp4">
@@ -81,7 +82,7 @@
         <div class="video-meta">
           <span class="tag">03</span>
           <h3 data-i18n="videos.v3t">主题与 Git 工作流</h3>
-          <p data-i18n="videos.v3d">Catppuccin Mocha 提示符显示分支状态、lazygit 终端 UI 浏览仓库、delta 高亮 git diff。</p>
+          <p data-i18n="videos.v3d">Catppuccin 提示符、lg 浏览仓库、delta 高亮 git diff。</p>
         </div>
         <video controls preload="metadata" poster="assets/videos/git_poster.png">
           <source src="assets/videos/git.mp4" type="video/mp4">
@@ -110,17 +111,20 @@
 
   <section class="section" id="start">
     <h2 data-i18n="start.title">快速开始</h2>
-    <p class="muted" data-i18n="start.sub">macOS / Debian Ubuntu / WSL 通用。Windows 原生请先装 WSL。</p>
+    <p class="muted" data-i18n="start.sub">macOS / Debian / Ubuntu / WSL 通用。</p>
+    <!-- BEGIN shared:install -->
+    <p class="muted" data-i18n="start.trust">先读脚本再运行：下面两条命令都会安装工具并写入 dotfiles，建议先打开 setup.sh 看一遍。</p>
     <div class="code-block">
-      <button class="copy-btn" type="button" data-copy="bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)" data-i18n="start.copy">复制</button>
+      <button class="copy-btn" type="button" data-copy="bash &lt;(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)" data-i18n="start.copy">复制</button>
       <code>bash &lt;(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)</code>
     </div>
-    <p class="muted" data-i18n="start.or">或者克隆后安装：</p>
+    <p class="muted" data-i18n="start.or">或者克隆后手动审查再安装：</p>
     <div class="code-block">
-      <button class="copy-btn" type="button" data-copy="git clone https://github.com/webxiongda/terminal-setup.git &#38;&#38; cd terminal-setup &#38;&#38; ./setup.sh" data-i18n="start.copy">复制</button>
+      <button class="copy-btn" type="button" data-copy="git clone https://github.com/webxiongda/terminal-setup.git &amp;&amp; cd terminal-setup &amp;&amp; ./setup.sh" data-i18n="start.copy">复制</button>
       <code>git clone https://github.com/webxiongda/terminal-setup.git &amp;&amp; cd terminal-setup &amp;&amp; ./setup.sh</code>
     </div>
     <p class="muted" data-i18n="start.opts">选项：--dry-run 预览 · --skip-node 跳过 Node · --reinstall 重装</p>
+    <!-- END shared:install -->
   </section>
 
   <footer class="footer">
