@@ -1,57 +1,72 @@
-# Polar Bear — 一键安装演示 (video 1/3)
-# Regenerate:  cd <repo> && vhs tapes/install.tape
-# Produces:    site/assets/videos/install.mp4
-# 演示真实的 setup.sh --dry-run 输出（不联网、不改环境、非交互不卡死）。
+# Polar Bear — 一键安装演示 (video 1/4)
+# 命令白名单（画面输入）：echo / ls / git status / cat
+#   Hide 中准备：clear、./setup.sh --dry-run > /tmp/pb-dry-raw.txt、sed 截取代表性片段
+# 预期成功条件：dry-run 退出码 0，输出含 "DRY-RUN MODE" 与 "Next steps"；
+#   画面每条输入退出码 0、有可见输出；无 command not found / 空输出 / 错误堆栈。
+# 预演记录见 tapes/rehearsal-log.md（2026-11-22）。
+# 不硬编码个人路径：录制脚本先 cd 到仓库根，VHS 继承该 cwd。
 
 Output site/assets/videos/install.mp4
 
 Set Shell "zsh"
 Set FontFamily "Maple Mono NF CN"
-Set FontSize 18
+Set FontSize 22
 Set Width 1200
 Set Height 640
 Set Padding 20
 Set Theme "Catppuccin Mocha"
-Set TypingSpeed 35ms
+Set TypingSpeed 20ms
 Set CursorBlink false
 
 Require git
 Require zsh
+Require sed
 
-Hide
-Type "cd ~/Desktop/GitHub项目/06-开发工具/terminal-setup"
-Enter
-Type "clear"
-Enter
-Show
-
-# 标题卡：真实的两条安装命令
-Type "# 一键安装：git clone 后 ./setup.sh"
-Sleep 600ms
-Enter
-Sleep 800ms
-Type "echo '  git clone https://github.com/webxiongda/terminal-setup.git  &&  cd terminal-setup  &&  ./setup.sh'"
-Sleep 700ms
-Enter
-Sleep 1200ms
-
-# 清屏，演示本机已克隆好的仓库上的 dry-run 真实输出
 Hide
 Type "clear"
 Enter
 Show
 
-Type "# dry-run 预览 — 逐条打印将执行的动作，非交互下自动跳过问询"
-Sleep 500ms
+# 1) 仓库现状：文件 + 干净工作区
+Type "echo 'setup.sh --dry-run'"
+Sleep 400ms
 Enter
-Sleep 800ms
+Sleep 2000ms
 
-Type "./setup.sh --dry-run 2>&1 | head -45"
-Sleep 700ms
+Type "ls"
+Sleep 300ms
 Enter
-Sleep 5500ms
+Sleep 2500ms
 
-Type "echo '✅ dry-run 通过 — 真实安装只需 ./setup.sh'"
+Type "git status"
+Sleep 300ms
+Enter
+Sleep 2500ms
+
+# 2) 真实 dry-run 在画面外执行；只把代表性片段放到一屏里展示
+Hide
+Type "./setup.sh --dry-run > /tmp/pb-dry-raw.txt"
+Enter
+Type "sed -n '1,20p' /tmp/pb-dry-raw.txt > /tmp/pb-dry-view.txt"
+Enter
+Show
+
+Type "cat /tmp/pb-dry-view.txt"
+Sleep 400ms
+Enter
+Sleep 4000ms
+
+Hide
+Type "sed -n '121,130p' /tmp/pb-dry-raw.txt > /tmp/pb-dry-view.txt"
+Enter
+Show
+
+Type "cat /tmp/pb-dry-view.txt"
 Sleep 400ms
 Enter
 Sleep 3000ms
+
+Type "echo 'Ready - run ./setup.sh to install'"
+Sleep 400ms
+Enter
+Sleep 2500ms
