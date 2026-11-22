@@ -16,8 +16,8 @@ for f in site/index.html site/styles.css site/app.js \
 done
 
 WORKTREE="$(mktemp -d)"
-cleanup() { git worktree remove --force "$WORKTREE" >/dev/null 2>&1 || true; rm -rf "$WORKTREE"; }
-trap cleanup EXIT
+
+cleanup() { cd "$ROOT"; git worktree remove --force "$WORKTREE" >/dev/null 2>&1 || true; git worktree prune >/dev/null 2>&1 || true; rm -rf "$WORKTREE"; }
 
 # 在临时 worktree 检出 gh-pages（不存在则由 main 建孤儿分支）
 if git show-ref --verify --quiet refs/heads/gh-pages; then
