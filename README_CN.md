@@ -42,7 +42,7 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 
 <!-- BEGIN shared:features -->
 - 🎨 **主题统一** — Starship 提示符自动跟随系统明暗模式（Latte / Mocha），配色与字体一次到位。
-- 🚀 **现代 CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用。
+- 🚀 **现代 CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用；fd = 更快的 find、rg = 更快的 grep，不覆盖系统 find/grep（避免 flag 冲突）。
 - 📦 **一键安装** — 零配置，几分钟搞定；本机自定义放 ~/.zshrc.local，重跑不丢。
 - 🖥 **不绑终端** — 用你现有的终端就行，推荐 Warp（可选，脚本不安装）。
 - 🔤 **中文友好** — Maple Mono NF CN 字体，图标不乱码、中文清晰。

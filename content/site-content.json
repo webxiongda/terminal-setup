@@ -18,7 +18,7 @@
     "videos.v1t": "一键安装",
     "videos.v1d": "一条命令自动 clone，或先审查 setup.sh；--dry-run 逐条预览，非交互不卡死。",
     "videos.v2t": "日常工具",
-    "videos.v2d": "ls / cat / z 智能跳转 / fzf 搜索 / top 系统监控 / fastfetch 系统信息 —— 全部用最短 alias。",
+    "videos.v2d": "ls / cat / z 智能跳转 / fzf 搜索 / top 系统监控 / fastfetch 系统信息 —— 常用命令用最短 alias；fd / rg 直接用短名，不覆盖系统 find / grep（避免 flag 冲突）。",
     "videos.v3t": "主题与 Git 工作流",
     "videos.v3d": "Catppuccin 提示符显示分支状态，lg 浏览仓库，git diff 由 delta 高亮。",
     "tools.title": "工具全家桶",
@@ -49,7 +49,7 @@
     "video.unsupported": "你的浏览器不支持视频播放。",
     "features": [
       { "icon": "🎨", "title": "主题统一", "desc": "Starship 提示符自动跟随系统明暗模式（Latte / Mocha），配色与字体一次到位。" },
-      { "icon": "🚀", "title": "现代 CLI", "desc": "eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用。" },
+      { "icon": "🚀", "title": "现代 CLI", "desc": "eza / bat / fd / rg / fzf / zoxide / lazygit / delta 全覆盖，装好即用；fd = 更快的 find、rg = 更快的 grep，不覆盖系统 find/grep（避免 flag 冲突）。" },
       { "icon": "📦", "title": "一键安装", "desc": "零配置，几分钟搞定；本机自定义放 ~/.zshrc.local，重跑不丢。" },
       { "icon": "🖥", "title": "不绑终端", "desc": "用你现有的终端就行，推荐 Warp（可选，脚本不安装）。" },
       { "icon": "🔤", "title": "中文友好", "desc": "Maple Mono NF CN 字体，图标不乱码、中文清晰。" },
@@ -84,7 +84,7 @@
     ],
     "toolsGroups": [
       { "name": "Starship", "desc": "跨 Shell 提示符（Catppuccin Mocha）" },
-      { "name": "eza / bat / fd / rg", "desc": "更现代的 ls / cat / find / grep" },
+      { "name": "eza / bat / fd / rg", "desc": "更现代的 ls / cat / find / grep；fd / rg 不覆盖系统命令" },
       { "name": "fzf / zoxide", "desc": "模糊搜索 + 智能目录跳转" },
       { "name": "lazygit / delta", "desc": "Git 终端 UI + 高亮 diff" },
       { "name": "fastfetch / btop", "desc": "系统信息与监控" },
@@ -127,7 +127,7 @@
     "videos.v1t": "One-command install",
     "videos.v1d": "One line auto-clones, or review setup.sh first; --dry-run previews every step and never blocks in non-interactive runs.",
     "videos.v2t": "Daily tools",
-    "videos.v2d": "ls / cat / smart z jumps / fzf search / top monitor / fastfetch — all via the shortest aliases.",
+    "videos.v2d": "ls / cat / smart z jumps / fzf search / top monitor / fastfetch — common commands use the shortest aliases; fd / rg are used directly and never override system find / grep (no flag conflicts).",
     "videos.v3t": "Theme & Git workflow",
     "videos.v3d": "Catppuccin prompt shows branch state, lg browses the repo, and git diff is highlighted by delta.",
     "tools.title": "The full stack",
@@ -158,7 +158,7 @@
     "video.unsupported": "Your browser does not support video playback.",
     "features": [
       { "icon": "🎨", "title": "Unified theme", "desc": "Starship follows your system's light/dark mode (Latte / Mocha); colors and font are set in one go." },
-      { "icon": "🚀", "title": "Modern CLI", "desc": "eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready to use." },
+      { "icon": "🚀", "title": "Modern CLI", "desc": "eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready; fd = faster find, rg = faster grep — system find/grep are left untouched to avoid flag conflicts." },
       { "icon": "📦", "title": "One-command install", "desc": "Zero config, ready in minutes. Local tweaks live in ~/.zshrc.local and survive re-runs." },
       { "icon": "🖥", "title": "Terminal agnostic", "desc": "Use your existing terminal; Warp recommended (optional, not installed)." },
       { "icon": "🔤", "title": "Chinese friendly", "desc": "Maple Mono NF CN font: crisp glyphs, icons and Chinese text." },
@@ -193,7 +193,7 @@
     ],
     "toolsGroups": [
       { "name": "Starship", "desc": "Cross-shell prompt (Catppuccin Mocha)" },
-      { "name": "eza / bat / fd / rg", "desc": "Modern ls / cat / find / grep" },
+      { "name": "eza / bat / fd / rg", "desc": "Modern ls / cat / find / grep; fd / rg do not override system commands" },
       { "name": "fzf / zoxide", "desc": "Fuzzy search + smart cd" },
       { "name": "lazygit / delta", "desc": "Git TUI + highlighted diff" },
       { "name": "fastfetch / btop", "desc": "System info & monitoring" },

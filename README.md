@@ -42,7 +42,7 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 
 <!-- BEGIN shared:features -->
 - 🎨 **Unified theme** — Starship follows your system's light/dark mode (Latte / Mocha); colors and font are set in one go.
-- 🚀 **Modern CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready to use.
+- 🚀 **Modern CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready; fd = faster find, rg = faster grep — system find/grep are left untouched to avoid flag conflicts.
 - 📦 **One-command install** — Zero config, ready in minutes. Local tweaks live in ~/.zshrc.local and survive re-runs.
 - 🖥 **Terminal agnostic** — Use your existing terminal; Warp recommended (optional, not installed).
 - 🔤 **Chinese friendly** — Maple Mono NF CN font: crisp glyphs, icons and Chinese text.
