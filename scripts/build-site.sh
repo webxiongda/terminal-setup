@@ -4,8 +4,14 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+WORKTREE=""
 
-fail() { echo "ERROR: $*" >&2; exit 1; }
+cleanup() {
+  [ -z "$WORKTREE" ] && return 0
+  (cd "$ROOT" && git worktree remove --force "$WORKTREE" >/dev/null 2>&1) || true
+  [ -d "$WORKTREE" ] && rm -rf "$WORKTREE"
+}
+fail() { echo "ERROR: $*" >&2; cleanup; exit 1; }
 
 # 前置检查
 [ "$(git branch --show-current)" = "main" ] || fail "请在 main 分支运行"
@@ -16,27 +22,20 @@ for f in site/index.html site/styles.css site/app.js \
 done
 
 WORKTREE="$(mktemp -d)"
-
-cleanup() { git -C "$ROOT" worktree remove --force "$WORKTREE" >/dev/null 2>&1 || git -C "$ROOT" worktree prune >/dev/null 2>&1 || true; rm -rf "$WORKTREE"; }
-
-# 在临时 worktree 检出 gh-pages（不存在则由 main 建孤儿分支）
 if git show-ref --verify --quiet refs/heads/gh-pages; then
   git worktree add -q "$WORKTREE" gh-pages
 else
   git worktree add -q --orphan "$WORKTREE" gh-pages
 fi
 
-# 清空 gh-pages worktree 内容，铺入最新站点（视频在 worktree 里不被 main 的 .gitignore 约束）
+# 清空 worktree 内容，铺入最新站点
 find "$WORKTREE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -R site/. "$WORKTREE"/
 
-cd "$WORKTREE"
-git add -A
-if git diff --cached --quiet; then
-  echo "==> 站点内容无变化，跳过 commit"
-else
-  git commit -q -m "docs: 发布官网 $(date +%Y-%m-%d %H:%M)"
-fi
-git push -q origin gh-pages
+(cd "$WORKTREE" && git add -A && \
+  if git diff --cached --quiet; then echo "==> 站点内容无变化，跳过 commit"; \
+  else git commit -q -m "docs: 发布官网 $(date +%Y-%m-%d %H:%M)"; fi && \
+  git push -q origin gh-pages) || fail "发布失败"
 
+cleanup
 echo "==> 发布完成：https://webxiongda.github.io/terminal-setup/"
