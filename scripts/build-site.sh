@@ -37,7 +37,7 @@ git add -A || fail "git add 失败"
 if git diff --cached --quiet; then
   echo "==> 站点内容无变化，跳过 commit"
 else
-  git commit -q -m "docs: 发布官网 $(date +%Y-%m-%d %H:%M)" || fail "commit 失败"
+  git commit -q -m "docs: 发布官网 $(date '+%Y-%m-%d %H:%M')" || fail "commit 失败"
 fi
 git push -q origin gh-pages || fail "push 失败"
 
