@@ -1,216 +1,135 @@
 # 🐻‍❄️ Polar Bear
 
-One-script terminal environment setup for **macOS**, **Debian/Ubuntu**, and **Windows (WSL)**. Run on a fresh machine, get a fully configured terminal in minutes.
+<!-- BEGIN shared:hero -->
+**One command turns a fresh shell into a beautiful, ready-to-use terminal.**
 
-**🇨🇳 [中文版文档](README_CN.md)**
+[🇨🇳 中文](README_CN.md) · [Website](https://webxiongda.github.io/terminal-setup/) · [★ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
+<!-- END shared:hero -->
 
+<!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/zsh.png" width="80" alt="Zsh">
-  &nbsp;&nbsp;
-  <img src="assets/starship.png" width="80" alt="Starship">
+  <img src="assets/preview.png" width="720" alt="Polar Bear terminal after one-command setup: Catppuccin prompt, eza, bat, lazygit">
 </p>
-<!-- Lead with what the animation shows, then show it. -->
-<p align="center">
-  <b>One command turns a fresh macOS / Linux shell into this ready-to-use setup.</b><br>
-  The 30-second animation below shows daily use after setup: <code>eza</code> for icon-rich listings,
-  <code>bat</code> for highlighted files, <code>zoxide</code> for smart jumps, <code>fzf</code> for fuzzy search,
-  <code>lazygit</code> and <code>fastfetch</code> — plus a Catppuccin <code>Starship</code> prompt that
-  follows your system's light/dark mode.
-</p>
+<p align="center"><sub>Before → after, one command apart. [Watch the video guide →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<!-- END shared:preview -->
 
-<p align="center">
-  <img src="assets/demo.gif" width="720" alt="Demo — daily use of the configured terminal">
-</p>
+<!-- BEGIN shared:install -->
+## Quick Start
 
-<p align="center">
-  <sub>The GIF is reproducible via <a href="https://github.com/charmbracelet/vhs">VHS</a> from <a href="assets/demo.tape">assets/demo.tape</a> — see "Regenerate the demo" below.</sub>
-</p>
+> **Read the script first.** Both lines below install tools and write dotfiles; open [setup.sh](setup.sh) and review it before you pick one.
 
-## ✨ Why This Project
+```bash
+# One line — auto-clones and sets everything up
+bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
 
-- ⚡ **One script, zero config** — fresh machine to productive terminal in minutes
-- ♻️ **Idempotent & re-runnable** — safe to run repeatedly; existing configs are backed up with timestamps before overwrite
-- 🛡️ **Non-destructive** — your machine-specific tweaks live in `~/.zshrc.local`, which the script sources last and never touches
-- 🧩 **Bring your own terminal** — no terminal emulator is installed; works with Warp, iTerm2, Windows Terminal, or any terminal you already use
-- 🌍 **Cross-platform** — macOS (primary), Debian/Ubuntu and WSL (experimental)
-- 🎨 **Coherent theme** — Catppuccin Mocha via Starship, with a CJK-capable Nerd Font, so icons and Chinese text both render correctly
+# Or clone, review setup.sh, then run
+git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup && ./setup.sh
+```
+<!-- END shared:install -->
 
+<!-- BEGIN shared:platforms -->
 ## Supported Platforms
 
-| Platform | Status | Package Manager |
-|----------|--------|----------------|
+| Platform | Status | Package manager |
+|---|---|---|
 | 🍎 **macOS** | ✅ Primary — battle-tested | Homebrew |
 | 🐧 **Debian / Ubuntu** | 🧪 Experimental — works but not extensively tested | apt + bundled binaries |
 | 🪟 **Windows (WSL)** | 🧪 Experimental — works but not extensively tested | apt (inside WSL) |
 | 🪟 **Windows (native)** | ⛔ Not supported | Use WSL instead |
+<!-- END shared:platforms -->
 
-## Quick Start
+## Core Features
 
-### macOS
-
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
-
-### Debian / Ubuntu
-
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
-
-### Windows (WSL)
-
-First install WSL if you haven't:
-```powershell
-# In PowerShell (Admin)
-wsl --install
-```
-
-Then inside WSL:
-```bash
-git clone https://github.com/webxiongda/terminal-setup.git
-cd terminal-setup && ./setup.sh
-```
-
-### Options
-
-```bash
-./setup.sh --skip-node   # Skip fnm + Node.js installation
-./setup.sh --dry-run     # Preview what would be done (no changes)
-./setup.sh --reinstall   # Force reinstall all tools
-```
-
-One-liner (auto-clones):
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/webxiongda/terminal-setup/main/setup.sh)
-```
-
-## Stack
-
-| Component | What |
-|-----------|------|
-| **Terminal emulator** | Bring your own — [Warp](https://www.warp.dev) is what I'd recommend (optional, not installed) |
-| **Zsh** | Shell with autosuggestions + syntax highlighting + completions |
-| **[Starship](https://starship.rs)** | Cross-shell prompt (Catppuccin Mocha theme) |
-| **Maple Mono NF CN** | Nerd Font for icons & powerline glyphs, with CJK support (MesloLGS NF on Linux) |
-| **[bat](https://github.com/sharkdp/bat)** | `cat` with syntax highlighting & line numbers |
-| **[eza](https://github.com/eza-community/eza)** | `ls` with icons, git status, tree view |
-| **[fd](https://github.com/sharkdp/fd)** | `find` but fast & intuitive |
-| **[ripgrep](https://github.com/BurntSushi/ripgrep)** | `grep` but orders of magnitude faster |
-| **[fzf](https://github.com/junegunn/fzf)** | Fuzzy finder (Ctrl+R / Ctrl+T / Alt+C) |
-| **[btop](https://github.com/aristocratos/btop)** | Beautiful system monitor |
-| **[zoxide](https://github.com/ajeetdsouza/zoxide)** | Smart `cd` that learns your habits |
-| **[jq](https://github.com/jqlang/jq)** | JSON processor |
-| **[tldr](https://github.com/tldr-pages/tldr)** | Simplified man pages with examples |
-| **[delta](https://github.com/dandavison/delta)** | Beautiful git diffs with syntax highlighting |
-| **[lazygit](https://github.com/jesseduffield/lazygit)** | Git TUI |
-| **[fnm](https://github.com/Schniz/fnm)** | Fast Node Manager (Rust) |
-| **[Zellij](https://zellij.dev)** | Modern terminal multiplexer (optional) |
-| **[fastfetch](https://github.com/fastfetch-cli/fastfetch)** | Fast system info (modern `neofetch` replacement) |
-| **[procs](https://github.com/dalance/procs)** | Colorful `ps` replacement |
-| **[sd](https://github.com/chmln/sd)** | Intuitive `sed` replacement |
-| **[hyperfine](https://github.com/sharkdp/hyperfine)** | Command-line benchmarking tool |
-| **[uv](https://github.com/astral-sh/uv)** | Blazing-fast Python package manager |
+<!-- BEGIN shared:features -->
+- 🎨 **Unified theme** — Starship follows your system's light/dark mode (Latte / Mocha); colors and font are set in one go.
+- 🚀 **Modern CLI** — eza / bat / fd / rg / fzf / zoxide / lazygit / delta, all covered and ready to use.
+- 📦 **One-command install** — Zero config, ready in minutes. Local tweaks live in ~/.zshrc.local and survive re-runs.
+- 🖥 **Terminal agnostic** — Use your existing terminal; Warp recommended (optional, not installed).
+- 🔤 **Chinese friendly** — Maple Mono NF CN font: crisp glyphs, icons and Chinese text.
+- 🧪 **Previewable** — --dry-run prints every step first; non-interactive runs never block on prompts.
+<!-- END shared:features -->
 
 ## What It Does
 
-1. Installs **package manager** (Homebrew on macOS, apt on Linux)
-2. Prints terminal emulator guidance — deliberately installs **no** terminal emulator (Warp is the optional recommendation)
-3. Installs the **Maple Mono NF CN** nerd font on macOS (bundled MesloLGS NF on Linux)
-4. Installs **Zsh** + plugins (autosuggestions, syntax highlighting, completions)
-5. Installs all **CLI tools** (Homebrew on macOS, apt + bundled binaries on Linux)
-6. Installs **Starship** prompt with Catppuccin Mocha config
-7. Installs **fnm** + **Node.js** LTS (optional, skips if fnm already installed)
-8. Installs **Zellij** terminal multiplexer (optional)
-9. Deploys all config files (existing configs are backed up with timestamps)
-   - Configures **git-delta** as git pager with syntax highlighting
-   - Sets up **zsh aliases** for modern tool replacements
-   - Initializes **zoxide** and **fzf** in shell config
-   - Sources `~/.zshrc.local` last, so machine-specific settings survive a re-run
-   - Includes **SSH key switcher** and **proxy toggle** functions
+<!-- BEGIN shared:what -->
+Touches only what it should — existing configs are backed up first.
 
-## Platform Notes
+1. Installs a package manager (Homebrew on macOS, apt on Linux).
+2. Installs Zsh plus autosuggestions, syntax highlighting and completions.
+3. Installs modern CLI tools and deploys the Catppuccin Mocha Starship prompt.
+4. Deploys configs; existing files are timestamped and backed up first, local overrides go to ~/.zshrc.local.
+<!-- END shared:what -->
 
-### macOS
-- Full support, everything installs via Homebrew
-- Maple Mono NF CN installs via Homebrew cask
-- All fonts and configs deploy seamlessly
+<details>
+<summary>25+ tools — the full stack</summary>
 
-### Debian / Ubuntu
-- CLI tools install via apt where available, bundled binaries for others (delta, lazygit, eza, tldr)
-- `bat` → `batcat`, `fd` → `fdfind` — symlinks are created automatically
-- Fonts install from bundled files in `fonts/` directory to `~/.local/share/fonts/`
-- Maple Mono NF CN isn't packaged for apt — install it manually if you want it
-- Zsh plugins install via apt or git clone fallback
-- Shell configs are automatically patched for Linux paths (no Homebrew references)
-- fnm installs to `~/.local/share/fnm` on Linux
+<!-- BEGIN shared:tools -->
+| Component | What it does |
+|---|---|
+| [Starship](https://starship.rs) | Cross-shell prompt (Catppuccin Mocha) |
+| [Zsh](https://www.zsh.org) | Shell with autosuggestions, highlighting and completion |
+| [zsh plugins](https://github.com/zsh-users) | autosuggestions / syntax-highlighting / completions |
+| [Maple Mono NF CN](https://github.com/subframe7536/maple-font) | CJK-capable Nerd Font with icons and powerline glyphs |
+| [eza](https://github.com/eza-community/eza) | ls with icons, git status and tree view |
+| [bat](https://github.com/sharkdp/bat) | cat with syntax highlighting and line numbers |
+| [fd](https://github.com/sharkdp/fd) | find, but fast and intuitive |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | grep, orders of magnitude faster |
+| [fzf](https://github.com/junegunn/fzf) | Fuzzy finder (Ctrl+R / Ctrl+T / Alt+C) |
+| [btop](https://github.com/aristocratos/btop) | Beautiful system monitor TUI |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd that learns your habits |
+| [jq](https://github.com/jqlang/jq) | JSON processor |
+| [tldr](https://github.com/tldr-pages/tldr) | Simplified man pages with examples |
+| [delta](https://github.com/dandavison/delta) | git diffs with syntax highlighting |
+| [lazygit](https://github.com/jesseduffield/lazygit) | Terminal UI for git |
+| [fnm](https://github.com/Schniz/fnm) | Fast Node version manager (Rust) |
+| [Zellij](https://zellij.dev) | Modern terminal multiplexer (optional) |
+| [fastfetch](https://github.com/fastfetch-cli/fastfetch) | Fast system information, modern neofetch |
+| [procs](https://github.com/dalance/procs) | Colorful ps replacement |
+| [sd](https://github.com/chmln/sd) | Intuitive sed replacement |
+| [hyperfine](https://github.com/sharkdp/hyperfine) | Command-line benchmarking tool |
+| [uv](https://github.com/astral-sh/uv) | Blazing-fast Python package manager |
+| [git + delta](https://git-scm.com) | git diff is paged through delta by default |
+| [Meslo 字体](https://github.com/meslo-fonts/MesloLGS-NF) | Bundled Nerd Font fallback on Linux |
+| [Your terminal](https://www.warp.dev) | No emulator installed; Warp recommended (optional) |
+<!-- END shared:tools -->
 
-### Windows (WSL)
-- Everything runs inside WSL (Ubuntu/Debian layer)
-- Terminal emulator runs on the Windows side — [Windows Terminal](https://aka.ms/terminal) works great
-- Script detects WSL automatically and adapts
-- If run in native Windows (MINGW/Git Bash), the script will prompt you to install WSL
+</details>
 
-## Aliases / Abbreviations
+## Docs & Links
 
-| Shortcut | Expands To |
-|----------|-----------|
-| `ls` | `eza --icons --group-directories-first` |
-| `ll` | `eza -la --icons --group-directories-first` |
-| `lt` | `eza --tree --icons --level=2` |
-| `cat` | `bat` |
-| `find` | `fd` |
-| `grep` | `rg` |
-| `top` | `btop` |
-| `lg` | `lazygit` |
+- [Website](https://webxiongda.github.io/terminal-setup/) — highlights and video guides
+- [中文文档](README_CN.md) · [简体中文说明、平台细节与排障都在这里](README_CN.md)
+- [快捷键速查手册](docs/快捷键速查手册.md) · [开发大纲](docs/开发大纲.md)
+- [视频讲解（官网）](https://webxiongda.github.io/terminal-setup/#videos)
+- [设计规格](docs/superpowers/specs/2026-11-22-README与官网门面优化设计.md)
 
-## fzf Keybindings
+<details>
+<summary>Safety, uninstall, troubleshooting, license</summary>
 
-| Key | What |
-|-----|------|
-| `Ctrl+R` | Fuzzy search command history |
-| `Ctrl+T` | Fuzzy find files (uses `fd` as backend) |
-| `Alt+C` | Fuzzy cd into directory |
+### Safety & backups
 
-## fnm — Node Version Manager
+The script backs up existing dotfiles with timestamps before overwriting them:
+`~/.zshrc.bak.<timestamp>`, `~/.config/starship.toml.bak.<timestamp>`.
+Machine-specific overrides belong in `~/.zshrc.local`, which is sourced last and never overwritten.
+Always review [setup.sh](setup.sh) before running it; use `--dry-run` to preview actions without changing anything.
 
-```bash
-fnm install 22            # Install Node 22
-fnm install --lts         # Install latest LTS
-fnm default 22            # Set default version
-fnm use 22                # Switch in current shell
-echo "22" > .node-version # Auto-switch when entering this directory
-```
-
-## SSH Key Switcher
-
-Both shell configs include a `set-ssh-key` function for quick SSH key switching:
+### Re-run & update
 
 ```bash
-set-ssh-key my-key-name     # Clears agent, loads ~/.ssh/my-key-name
-set-ssh-key                  # Shows available keys on error
+./setup.sh --reinstall   # re-apply everything, ignoring "already installed" checks
+./setup.sh --dry-run     # preview actions without changing anything
+./setup.sh --skip-node   # skip fnm + Node.js if you manage Node yourself
 ```
 
----
+### Uninstall
 
-## 🔁 Re-run, Update & Uninstall
+There is no built-in uninstall command. The script only installs tools and deploys configs:
 
-```bash
-./setup.sh --reinstall   # Re-apply everything, ignoring "already installed" checks
-./setup.sh --dry-run     # Preview actions without changing anything
-./setup.sh --skip-node   # Skip fnm + Node.js if you manage Node yourself
-```
+- Restore configs from their timestamped backups.
+- Remove CLI tools with your package manager (`brew uninstall <tool>` on macOS, `sudo apt remove <tool>` on Debian/Ubuntu).
+- Delete `~/.zshrc.local` only if you no longer want local overrides.
 
-There is **no built-in uninstall command**. The script only installs tools and deploys configs; to undo manually:
-
-- Restore configs from their timestamped backups (`~/.zshrc.bak.<timestamp>`, `~/.config/starship.toml.bak.<timestamp>`).
-- Remove installed CLI tools with your package manager (`brew uninstall <tool>` on macOS, `sudo apt remove <tool>` on Debian/Ubuntu).
-- Delete `~/.zshrc.local` only if you no longer want your machine-local overrides.
-
-## 🛠️ Troubleshooting
+### Troubleshooting
 
 | Symptom | Fix |
 |---------|-----|
@@ -218,23 +137,12 @@ There is **no built-in uninstall command**. The script only installs tools and d
 | `bat: command not found` on Linux | The script symlinks `batcat` → `bat`; run `hash -r` or open a new shell. |
 | `fd: command not found` on Linux | The script symlinks `fdfind` → `fd`; open a new shell. |
 | Prompt looks wrong / no colors | Make sure your terminal supports 24-bit color, then `exec zsh` to reload config. |
-| `command not found: eza` after setup | The script installs to paths that may not be on `PATH` yet — open a new terminal or re-run with `--reinstall`. |
+| `command not found: eza` after setup | Open a new terminal, or re-run with `--reinstall`. |
 | Chinese characters show as tofu | Use Maple Mono NF CN / MesloLGS NF and ensure locale is UTF-8 (`locale`). |
-| Running inside native Windows (not WSL) | Native Windows is unsupported; install WSL (`wsl --install`) and run the script there. |
+| Running inside native Windows (not WSL) | Native Windows is unsupported; install WSL (`wsl --install`) and run there. |
 
-## 🎬 Regenerate the Demo
-
-`assets/demo.gif` isn't a screen recording — it's a reproducible script written with [VHS](https://github.com/charmbracelet/vhs). Change the commands in `assets/demo.tape`, re-render, and the intro stays in sync with the actual tool stack.
-
-```bash
-brew install vhs            # also needs ttyd and ffmpeg on PATH
-vhs assets/demo.tape        # regenerates assets/demo.gif
-```
-
-For MP4/WebM, add an extra `Output assets/demo.mp4` line to the tape and re-run.
-
----
-
-## License
+### License
 
 MIT
+
+</details>
