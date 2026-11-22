@@ -24,16 +24,16 @@ done
 
 WORKTREE="$(mktemp -d)"
 if git show-ref --verify --quiet refs/heads/gh-pages; then
-  git worktree add -q "$WORKTREE" gh-pages
+  git worktree add -q "$WORKTREE" gh-pages || fail "worktree add 失败"
 else
-  git worktree add -q --orphan "$WORKTREE" gh-pages
+  git worktree add -q --orphan -b gh-pages "$WORKTREE" || fail "worktree add --orphan 失败"
 fi
 
 # 清空 worktree 内容，铺入最新站点
-find "$WORKTREE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-cp -R site/. "$WORKTREE"/
-cd "$WORKTREE"
-git add -A
+find "$WORKTREE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} + || fail "清理 worktree 失败"
+cp -R site/. "$WORKTREE"/ || fail "复制站点失败"
+cd "$WORKTREE" || fail "cd worktree 失败"
+git add -A || fail "git add 失败"
 if git diff --cached --quiet; then
   echo "==> 站点内容无变化，跳过 commit"
 else

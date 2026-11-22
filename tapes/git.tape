@@ -18,7 +18,7 @@ Require starship
 Require lazygit
 Require delta
 Require git
-
+Require zsh
 Hide
 Type "cd ~/Desktop/GitHub项目/06-开发工具/terminal-setup"
 Enter
@@ -47,7 +47,7 @@ Ctrl+C
 Sleep 1000ms
 
 # 3) delta 高亮 diff（显式调用，避免 pager 配置差异）
-Type "git diff -- setup.sh | delta"
+Type "git log -p -1 -- setup.sh | delta | head -40"
 Sleep 500ms
 Enter
 Sleep 4000ms

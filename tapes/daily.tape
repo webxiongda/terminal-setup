@@ -20,6 +20,8 @@ Require eza
 Require bat
 Require fzf
 Require zoxide
+Require fastfetch
+Require zsh
 
 Hide
 Type "cd ~/Desktop/GitHub项目/06-开发工具/terminal-setup"

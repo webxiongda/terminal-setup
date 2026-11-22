@@ -3,14 +3,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-missing=0
+missing=""
 for c in vhs ttyd ffmpeg; do
   if ! command -v "$c" >/dev/null 2>&1; then
-    echo "缺少 $c，请先运行: brew install vhs ttyd" >&2
-    missing=1
+    missing="$missing $c"
   fi
 done
-[ "$missing" -eq 0 ] || exit 1
+[ -z "$missing" ] || { echo "缺少:$missing，请先运行: brew install vhs ttyd ffmpeg" >&2; exit 1; }
 
 for t in install daily git; do
   echo "==> 录制 $t.tape -> site/assets/videos/$t.mp4"
