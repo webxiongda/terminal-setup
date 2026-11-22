@@ -1,17 +1,29 @@
 # 🐻‍❄️ Polar Bear
 
 <!-- BEGIN shared:hero -->
-**One command turns a fresh shell into a beautiful, ready-to-use terminal.**
+**After installing, type just 3 commands — and your terminal looks like this.**
+
+Old configs auto-backed up · Preview with --dry-run · Safe to re-run
+
+Not another dotfiles repo — a previewable, repeatable installer that won't break your setup.
 
 [🇨🇳 中文](README_CN.md) · [Website](https://webxiongda.github.io/terminal-setup/) · [★ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
 <!-- END shared:hero -->
 
 <!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/preview.png" width="720" alt="Polar Bear terminal after one-command setup: Catppuccin prompt, eza, bat, lazygit">
+  <img src="assets/before-after.png" width="720" alt="Terminal before and after setup: plain shell on the left, icons / highlights / git branch on the right">
 </p>
-<p align="center"><sub>Before → after, one command apart. [Watch the video guide →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<p align="center"><sub>BEFORE → AFTER, just 3 commands away. [Watch the video guide →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
 <!-- END shared:preview -->
+
+<!-- BEGIN shared:get3 -->
+**What you get in 3 things**
+
+1. 🎨 Colorful prompt: Catppuccin theme + git branch
+2. 🚀 Modern ls · cat: eza / bat with icons & highlights
+3. 🧭 Smart jumps + fuzzy search: zoxide / fzf
+<!-- END shared:get3 -->
 
 <!-- BEGIN shared:install -->
 ## Quick Start

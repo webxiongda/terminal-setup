@@ -1,17 +1,29 @@
 # 🐻‍❄️ Polar Bear
 
 <!-- BEGIN shared:hero -->
-**一条命令，把全新终端变成好看、开箱即用的样子。**
+**装完只需 3 条命令，你的终端就会长这样。**
+
+旧配置自动备份 · 可 --dry-run 预览 · 重复运行不会弄坏环境
+
+不是又一个 dotfiles 仓库，而是一个可预览、可重跑、装不坏的终端安装器。
 
 [🇬🇧 English](README.md) · [官网](https://webxiongda.github.io/terminal-setup/) · [⭐ Star](https://github.com/webxiongda/terminal-setup/stargazers) · [MIT](LICENSE)
 <!-- END shared:hero -->
 
 <!-- BEGIN shared:preview -->
 <p align="center">
-  <img src="assets/preview.png" width="720" alt="一键配置后的 Polar Bear 终端：Catppuccin 提示符、eza、bat、lazygit">
+  <img src="assets/before-after.png" width="720" alt="终端装完前后对照：左侧朴素终端，右侧带图标、高亮与 git 分支">
 </p>
-<p align="center"><sub>装好前 → 装好后，中间只隔一条命令。 [看视频讲解 →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
+<p align="center"><sub>BEFORE → AFTER，中间只隔 3 条命令。 [看视频讲解 →](https://webxiongda.github.io/terminal-setup/#videos)</sub></p>
 <!-- END shared:preview -->
+
+<!-- BEGIN shared:get3 -->
+**装完得到 3 件事**
+
+1. 🎨 彩色提示符：Catppuccin 主题 + 分支状态
+2. 🚀 现代 ls · cat：eza / bat 带图标与高亮
+3. 🧭 智能跳转 + 模糊搜索：zoxide / fzf
+<!-- END shared:get3 -->
 
 <!-- BEGIN shared:install -->
 ## 快速开始
