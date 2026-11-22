@@ -107,6 +107,22 @@ Touches only what it should — existing configs are backed up first.
 
 </details>
 
+<!-- BEGIN shared:convert -->
+## Who it's for
+
+- A brand-new Mac and you want the terminal set up in one go
+- Reinstalling or switching machines and rebuilding a familiar dev environment
+- Keeping several machines consistent without putting private tweaks into public dotfiles
+
+### If it helps you
+
+A ⭐ helps others find it in search — entirely optional, just a way to let a good tool be seen.
+
+### Want your own dotfiles?
+
+Fork the repo and tailor configs/ and setup.sh to your own habits; your changes stay in your fork and never affect upstream.
+<!-- END shared:convert -->
+
 ## Docs & Links
 
 - [Website](https://webxiongda.github.io/terminal-setup/) — highlights and video guides

@@ -134,6 +134,22 @@ function get3Block(c) {
   ].join('\n');
 }
 
+function convertBlock(c) {
+  return [
+    `## ${c['convert.whoTitle']}`,
+    '',
+    ...c['convert.who'].map((s) => `- ${s}`),
+    '',
+    `### ${c['convert.starTitle']}`,
+    '',
+    c['convert.star'],
+    '',
+    `### ${c['convert.forkTitle']}`,
+    '',
+    c['convert.fork'],
+  ].join('\n');
+}
+
 function siteHeroBlock(c) {
   return [
     '      <p class="eyebrow" data-i18n="hero.eyebrow">' + escHtml(c['hero.eyebrow']) + '</p>',
@@ -205,6 +221,7 @@ for (const [lang, c, rel] of [['zh', zh, 'README_CN.md'], ['en', en, 'README.md'
     features: featuresBlock(c),
     what: whatBlock(c),
     tools: toolsBlock(c),
+    convert: convertBlock(c),
   };
   for (const [name, body] of Object.entries(sections)) {
     replaceMarked(rel, `<!-- BEGIN shared:${name} -->`, `<!-- END shared:${name} -->`, body);

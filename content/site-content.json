@@ -20,6 +20,16 @@
     ],
     "hero.videoLink": "看视频讲解 →",
     "hero.cta": "立即安装",
+    "convert.whoTitle": "适合谁",
+    "convert.who": [
+      "刚拿到新 Mac，想一次把终端配好",
+      "重装系统 / 换了电脑，需要重建熟悉的开发环境",
+      "想统一多机配置，又不想把私有设置写进公共 dotfiles"
+    ],
+    "convert.starTitle": "如果你觉得好用",
+    "convert.star": "顺手点个 ⭐，让更多人能搜到它 —— 不强制，纯粹是让好工具被看见。",
+    "convert.forkTitle": "想改自己的 dotfiles？",
+    "convert.fork": "可以直接 fork 这个仓库，按自己的习惯改 configs/ 与 setup.sh；你的改动只留在自己的仓库，不影响上游。",
     "features.title": "核心特性",
     "videos.title": "进阶视频讲解",
     "videos.v1t": "一键安装",
@@ -136,6 +146,16 @@
     ],
     "hero.videoLink": "Watch the video guide →",
     "hero.cta": "Install now",
+    "convert.whoTitle": "Who it's for",
+    "convert.who": [
+      "A brand-new Mac and you want the terminal set up in one go",
+      "Reinstalling or switching machines and rebuilding a familiar dev environment",
+      "Keeping several machines consistent without putting private tweaks into public dotfiles"
+    ],
+    "convert.starTitle": "If it helps you",
+    "convert.star": "A ⭐ helps others find it in search — entirely optional, just a way to let a good tool be seen.",
+    "convert.forkTitle": "Want your own dotfiles?",
+    "convert.fork": "Fork the repo and tailor configs/ and setup.sh to your own habits; your changes stay in your fork and never affect upstream.",
     "features.title": "Core features",
     "videos.title": "Advanced video guides",
     "videos.v1t": "One-command install",

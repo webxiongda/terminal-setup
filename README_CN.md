@@ -107,6 +107,22 @@ git clone https://github.com/webxiongda/terminal-setup.git && cd terminal-setup 
 
 </details>
 
+<!-- BEGIN shared:convert -->
+## 适合谁
+
+- 刚拿到新 Mac，想一次把终端配好
+- 重装系统 / 换了电脑，需要重建熟悉的开发环境
+- 想统一多机配置，又不想把私有设置写进公共 dotfiles
+
+### 如果你觉得好用
+
+顺手点个 ⭐，让更多人能搜到它 —— 不强制，纯粹是让好工具被看见。
+
+### 想改自己的 dotfiles？
+
+可以直接 fork 这个仓库，按自己的习惯改 configs/ 与 setup.sh；你的改动只留在自己的仓库，不影响上游。
+<!-- END shared:convert -->
+
 ## 文档与链接
 
 - [官网](https://webxiongda.github.io/terminal-setup/) — 特性展示与视频讲解
