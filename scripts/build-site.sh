@@ -10,6 +10,7 @@ cleanup() {
   [ -z "$WORKTREE" ] && return 0
   (cd "$ROOT" && git worktree remove --force "$WORKTREE" >/dev/null 2>&1) || true
   [ -d "$WORKTREE" ] && rm -rf "$WORKTREE"
+  return 0
 }
 fail() { echo "ERROR: $*" >&2; cleanup; exit 1; }
 
