@@ -31,11 +31,16 @@ fi
 # 清空 worktree 内容，铺入最新站点
 find "$WORKTREE" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -R site/. "$WORKTREE"/
+cd "$WORKTREE"
+git add -A
+if git diff --cached --quiet; then
+  echo "==> 站点内容无变化，跳过 commit"
+else
+  git commit -q -m "docs: 发布官网 $(date +%Y-%m-%d %H:%M)" || fail "commit 失败"
+fi
+git push -q origin gh-pages || fail "push 失败"
 
-(cd "$WORKTREE" && git add -A && \
-  if git diff --cached --quiet; then echo "==> 站点内容无变化，跳过 commit"; \
-  else git commit -q -m "docs: 发布官网 $(date +%Y-%m-%d %H:%M)"; fi && \
-  git push -q origin gh-pages) || fail "发布失败"
+cd "$ROOT"
 
 cleanup
 echo "==> 发布完成：https://webxiongda.github.io/terminal-setup/"
